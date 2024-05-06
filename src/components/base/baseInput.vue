@@ -1,13 +1,6 @@
 <template>
   <div class="w-100 app-flex app-flex-column">
-    <span class="app-font-size-14 app-font-weight-600 py-2">
-      {{ label }}
-    </span>
-    <input
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      :type="type"
-    />
+    <v-text-field clearable :label="label" variant="outlined"></v-text-field>
     <span
       v-if="error"
       class="app-font-size-12 app-font-weight-600 app-color-danger py-2"
