@@ -1,0 +1,69 @@
+@import "../scss/global/_theme_colors";
+
+.app-bg-light-pro {
+  background: rgb(230, 224, 224);
+  background: linear-gradient(
+    175deg,
+    rgba(230, 224, 224, 1) 0%,
+    rgba(230, 224, 224, 1) 50%,
+    rgba(206, 206, 255, 1) 86%
+  );
+  color: var(--dark-);
+}
+
+.app-bg-dark-pro {
+  background: rgb(48, 48, 48);
+  background: linear-gradient(
+    175deg,
+    rgba(48, 48, 48, 1) 0%,
+    rgba(48, 48, 48, 1) 32%,
+    rgba(30, 30, 96, 1) 100%
+  );
+  color: var(--white-);
+}
+
+.app-bg-primary {
+  background: var(--primary-);
+  color: var(--white-);
+  transition: 0.5s;
+}
+.app-bg-secondary {
+  background: var(--secondary-);
+  color: var(--white-);
+  transition: 0.5s;
+}
+.app-bg-danger {
+  background: var(--danger-);
+  color: var(--white-);
+  transition: 0.5s;
+}
+.app-bg-gray {
+  background: var(--gray-);
+  color: var(--white-);
+  transition: 0.5s;
+}
+.app-bg-light {
+  background: var(--light-);
+  color: var(--dark-);
+  transition: 0.5s;
+}
+.app-bg-white {
+  background: var(--white-);
+  color: var(--dark-);
+  transition: 0.5s;
+}
+.app-bg-dark {
+  background: var(--dark-);
+  color: var(--white-);
+  transition: 0.5s;
+}
+.app-bg-info {
+  background: var(--info-);
+  color: var(--white-);
+  transition: 0.5s;
+}
+.app-bg-warning {
+  background: var(--warning-);
+  color: var(--dark-);
+  transition: 0.5s;
+}

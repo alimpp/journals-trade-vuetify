@@ -1,0 +1,25 @@
+.slid-left-animation {
+  animation: 0.3s slid-left;
+}
+
+@keyframes slid-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slid-up-animation {
+  animation: 0.3s slid-up;
+}
+
+@keyframes slid-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
