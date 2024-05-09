@@ -40,12 +40,15 @@
 
 <script setup>
 import { ref } from "vue";
-import { AddProfile } from "@/api/profile.js";
-import { validateUsername } from "@/utils/validatie.js";
+import { validateUsername, validateEmail } from "@/utils/validatie.js";
+import { profileDataStore } from "@/stores/profile/profileDS.js";
+import { useRouter } from "vue-router";
 
 import BaseInput from "@/components/base/baseInput.vue";
 import BaseButton from "@/components/base/baseButton";
 
+const router = useRouter();
+const profileDS = profileDataStore();
 const loading = ref(false);
 const form = ref({
   username: "",
@@ -63,11 +66,33 @@ const validate = ref({
 });
 
 const createProfile = () => {
-  loading.value = true;
-  AddProfile();
-  setTimeout(() => {
-    loading.value = false;
-  }, 3000);
+  let access = true;
+  if (validateUsername(form.value.username).state) {
+    validate.value.username.state = validateUsername(form.value.username).state;
+    validate.value.username.text = validateUsername(form.value.username).text;
+    access = false;
+  } else {
+    validate.value.username.state = validateUsername(form.value.username).state;
+    validate.value.username.text = validateUsername(form.value.username).text;
+    access = true;
+  }
+  if (validateEmail(form.value.email).state) {
+    validate.value.email.state = validateEmail(form.value.email).state;
+    validate.value.email.text = validateEmail(form.value.email).text;
+    access = false;
+  } else {
+    validate.value.email.state = validateEmail(form.value.email).state;
+    validate.value.email.text = validateEmail(form.value.email).text;
+    access = true;
+  }
+  if (access) {
+    loading.value = true;
+    profileDS.addProfile(form.value);
+    setTimeout(() => {
+      loading.value = false;
+      router.push("/journals");
+    }, 3000);
+  }
 };
 </script>
 

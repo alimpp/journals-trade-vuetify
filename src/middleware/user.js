@@ -1,5 +1,5 @@
 import { useRouter } from "vue-router";
-import { GetProfile } from '@/api/profile'
+import { GetProfile } from "@/api/profile";
 
 export const DetectUser = () => {
   const profile = GetProfile();

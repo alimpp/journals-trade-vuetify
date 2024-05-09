@@ -7,6 +7,6 @@ import { onMounted } from "vue";
 import { DetectUser } from "@/middleware/user";
 
 onMounted(() => {
-  // DetectUser();
+  DetectUser();
 });
 </script>
