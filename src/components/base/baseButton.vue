@@ -1,6 +1,7 @@
 <template>
   <button
-    class="base-button app-bg-primary"
+    :class="{ 'app-bg-primary': true }"
+    class="base-button"
     :style="{ width: `${width}`, height: `${height}` }"
   >
     <v-progress-linear indeterminate v-if="loading"></v-progress-linear>
@@ -28,6 +29,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  bg: { type: String, default: "app-bg-primary" },
 });
 </script>
 

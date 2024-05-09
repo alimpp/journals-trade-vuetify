@@ -6,12 +6,13 @@
         @click="menuState = true"
       ></i>
       <BaseAvatar :name="username" />
-      <span class="app-font-size-14 app-font-weight-700 app-color-dark">{{
+      <span class="app-font-size-14 app-font-weight-700">{{
         username
       }}</span>
     </div>
     <div class="logo-content app-flex app-justify-end app-align-center px-2">
-      <span class="app-font-size-14 app-font-weight-600 app-color-primary">
+      <ThemeSwitcher class="app-mx-2" />
+      <span class="app-font-size-14 app-font-weight-600">
         JOURNAL TRADE
       </span>
     </div>
@@ -25,6 +26,7 @@ import { profileDataStore } from "@/stores/profile/profileDS.js";
 
 import MenuItems from "@/components/menuItems/index.vue";
 import BaseAvatar from "@/components/base/baseAvatar.vue";
+import ThemeSwitcher from "@/components/themeSwitcher/index.vue";
 
 const menuState = ref(false);
 const profileDS = profileDataStore();

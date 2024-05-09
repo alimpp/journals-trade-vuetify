@@ -1,5 +1,6 @@
 <template>
   <v-select
+    :theme="ThemeStatus"
     v-model="selectedItem"
     :items="scheama"
     :label="label"
@@ -9,6 +10,16 @@
 
 <script setup>
 import { defineProps, defineEmits, ref, watch } from "vue";
+import { themeDataStore } from "@/stores/theme";
+const ThemeDS = themeDataStore();
+
+const ThemeStatus = computed(() => {
+  return ThemeDS.theme;
+});
+
+const HandleChangeTheme = () => {
+  ThemeDS.changeThemeStatus();
+};
 
 const emit = defineEmits(["selectValue"]);
 const selectedItem = ref(null);

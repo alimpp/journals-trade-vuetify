@@ -1,6 +1,6 @@
 <template>
   <div class="index-table">
-    <v-table class="rounded">
+    <v-table class="rounded" :theme="ThemeStatus">
       <thead>
         <tr>
           <th v-for="index in tableScheama.header" :key="index.id">
@@ -17,7 +17,16 @@
 
 <script setup>
 import { defineProps } from "vue";
+import { themeDataStore } from "@/stores/theme";
+const ThemeDS = themeDataStore();
 
+const ThemeStatus = computed(() => {
+  return ThemeDS.theme;
+});
+
+const HandleChangeTheme = () => {
+  ThemeDS.changeThemeStatus();
+};
 const props = defineProps({
   tableType: {
     type: String,
