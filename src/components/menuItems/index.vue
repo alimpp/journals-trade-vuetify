@@ -20,10 +20,10 @@
       <div
         class="w-100 app-flex app-flex-column app-align-center app-justify-center py-5"
       >
-        <BaseAvatar name="Alex" />
-        <span class="app-font-size-14 app-font-weight-600 py-2"
-          >Alex Addams</span
-        >
+        <BaseAvatar :name="username" />
+        <span class="app-font-size-14 app-font-weight-600 py-2">{{
+          username
+        }}</span>
       </div>
 
       <div
@@ -43,12 +43,18 @@
 
 <script setup>
 import { useRouter } from "vue-router";
-import { defineProps, defineEmits, ref } from "vue";
+import { defineProps, defineEmits, ref, computed } from "vue";
+import { profileDataStore } from "@/stores/profile/profileDS.js";
 
 import BaseAvatar from "@/components/base/baseAvatar.vue";
 
 const emit = defineEmits(["closeMenu"]);
 const router = useRouter();
+const profileDS = profileDataStore();
+
+const username = computed(() => {
+  return profileDS.user.username;
+});
 
 const menuItems = ref([
   { id: "000", title: "Journals", path: "/journals" },

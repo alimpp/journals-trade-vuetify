@@ -17,7 +17,7 @@ const props = defineProps({
 });
 
 const avatar = computed(() => {
-  return props.name[0].toUpperCase();
+  return props.name.slice(0, 1).toUpperCase();
 });
 </script>
 
