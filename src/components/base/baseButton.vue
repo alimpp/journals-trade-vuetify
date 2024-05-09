@@ -5,7 +5,14 @@
     :style="{ width: `${width}`, height: `${height}` }"
   >
     <v-progress-linear indeterminate v-if="loading"></v-progress-linear>
-    <span class="app-font-size-14 app-font-weight-500" v-else>{{ name }}</span>
+    <span
+      class="app-font-size-14 app-font-weight-500"
+      v-if="name != '' && !loading"
+      >{{ name }}</span
+    >
+    <v-icon icon="$plus" v-if="icon == 'plus' && !loading"></v-icon>
+    <v-icon icon="$edit" v-if="icon == 'edit' && !loading"></v-icon>
+    <v-icon icon="$delete" v-if="icon == 'delete' && !loading"></v-icon>
   </button>
 </template>
 
@@ -29,7 +36,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  bg: { type: String, default: "app-bg-primary" },
+  icon: { type: String, default: "" },
 });
 </script>
 

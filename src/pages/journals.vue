@@ -1,5 +1,5 @@
 <template>
-  <div class="journals-page app-container">
+  <div class="journals-page">
     <div class="app-flex">
       <div style="width: 200px">
         <BaseSelect
@@ -16,13 +16,22 @@
         />
       </div>
     </div>
-    <TableLoading v-if="loading" />
-    <JournalsTable
-      v-else
-      class="fade_animations"
-      :tableScheama="tableScheama"
-      :dataSource="tableDataSource"
-    />
+    <div class="app-flex">
+      <div class="app-flex app-flex-column app-w-90">
+        <TableLoading v-if="loading" />
+        <JournalsTable
+          v-else
+          class="fade_animations"
+          :tableScheama="tableScheama"
+          :dataSource="tableDataSource"
+        />
+      </div>
+      <div class="app-flex app-flex-column app-align-center app-mx-3 app-w-10">
+        <baseButton icon="plus" width="40px" height="40px" />
+        <baseButton class="mt-3" icon="edit" width="40px" height="40px" />
+        <baseButton class="mt-3" icon="delete" width="40px" height="40px" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,6 +42,7 @@ import { journalsDataStore } from "@/stores/journals/journalsDS.js";
 import TableLoading from "@/components/tableLoading/index.vue";
 import JournalsTable from "@/components/journals/table.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
+import baseButton from "@/components/base/baseButton.vue";
 
 const journalsDS = journalsDataStore();
 

@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const themeDataStore = defineStore("themeStore", {
   state: () => ({
-    theme: "light",
+    theme: "dark",
   }),
   actions: {
     changeThemeStatus() {
