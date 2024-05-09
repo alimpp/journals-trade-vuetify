@@ -1,12 +1,22 @@
 <template>
-  <div class="journals-page">journals pages...</div>
+  <div class="journals-page app-container">
+    <JournalsTable :tableScheama="tableScheama" :dataSource="tableDataSource" />
+  </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { DetectUser } from "@/middleware/user";
+import { computed } from "vue";
+import { journalsDataStore } from "@/stores/journals/journalsDS.js";
 
-onMounted(() => {
-  DetectUser();
+import JournalsTable from "@/components/journals/table.vue";
+
+const journalsDS = journalsDataStore();
+
+const tableScheama = computed(() => {
+  return journalsDS.tableSchema;
+});
+
+const tableDataSource = computed(() => {
+  return journalsDS.tableDataSource;
 });
 </script>
