@@ -14,7 +14,7 @@
         <td>{{ item.target1 }}</td>
         <td>{{ item.target2 }}</td>
         <td>{{ item.target3 }}</td>
-        <td>{{ item.descrption }}</td>
+        <td>{{ item.state }}</td>
       </tr>
     </template>
   </BaseTable>
