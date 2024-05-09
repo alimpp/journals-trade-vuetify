@@ -1,9 +1,17 @@
 <template>
-  <div class="w-100 app-flex app-flex-column">
-    <v-text-field clearable :label="label" variant="underlined"></v-text-field>
+  <div class="app-w-100 app-flex app-flex-column">
+    <span class="app-font-size-14 app-font-weight-600 app-py-2">
+      {{ label }}
+    </span>
+    <input
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+      :type="type"
+      :class="{ error: error }"
+    />
     <span
       v-if="error"
-      class="app-font-size-12 app-font-weight-600 app-color-danger py-2"
+      class="app-font-size-12 app-font-weight-600 app-color-danger app-py-2"
     >
       {{ messageError }}
     </span>
@@ -45,9 +53,14 @@ const props = defineProps({
 <style scoped lang="scss">
 input {
   width: 100%;
-  padding: 7px 5px;
+  height: 40px;
+  padding: 0 7px;
   border: 1px solid #a4a4a48b;
   outline-color: #0022ff47;
   border-radius: 5px;
+}
+
+.error {
+  border: 1px solid #f50000;
 }
 </style>
