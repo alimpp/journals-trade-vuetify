@@ -16,7 +16,13 @@
         />
       </div>
     </div>
-    <JournalsTable :tableScheama="tableScheama" :dataSource="tableDataSource" />
+    <TableLoading v-if="loading" />
+    <JournalsTable
+      v-else
+      class="fade_animations"
+      :tableScheama="tableScheama"
+      :dataSource="tableDataSource"
+    />
   </div>
 </template>
 
@@ -24,10 +30,15 @@
 import { computed } from "vue";
 import { journalsDataStore } from "@/stores/journals/journalsDS.js";
 
+import TableLoading from "@/components/tableLoading/index.vue";
 import JournalsTable from "@/components/journals/table.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
 
 const journalsDS = journalsDataStore();
+
+const loading = computed(() => {
+  return journalsDS.loading;
+});
 
 const tableScheama = computed(() => {
   return journalsDS.tableSchema;

@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 
 export const journalsDataStore = defineStore("journalsStore", {
   state: () => ({
+    loading: false,
     tableSchema: {
       header: [
         "Coin",
@@ -231,14 +232,22 @@ export const journalsDataStore = defineStore("journalsStore", {
     ],
   }),
   actions: {
+    loadingControler() {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
+    },
     filtredBy(param, state) {
       switch (state) {
         case "coin":
+          this.loadingControler();
           this.tableDataSource = this.tableDataSource.filter((item) => {
             return item.coin == param;
           });
           break;
         case "state":
+          this.loadingControler();
           this.tableDataSource = this.tableDataSource.filter((item) => {
             return item.state == param;
           });
