@@ -1,6 +1,10 @@
 <template>
-  <button class="base-button py-2" :style="{ width: `${width}` }">
-    {{ name }}
+  <button
+    class="base-button app-bg-primary"
+    :style="{ width: `${width}`, height: `${height}` }"
+  >
+    <v-progress-linear indeterminate v-if="loading"></v-progress-linear>
+    <span class="app-font-size-14 app-font-weight-500" v-else>{{ name }}</span>
   </button>
 </template>
 
@@ -16,9 +20,17 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  height: {
+    type: String,
+    default: "",
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
-  
+
 <style scoped lang="scss">
 .base-button {
   display: flex;

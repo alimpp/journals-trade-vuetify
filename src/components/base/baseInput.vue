@@ -1,6 +1,6 @@
 <template>
   <div class="w-100 app-flex app-flex-column">
-    <v-text-field clearable :label="label" variant="outlined"></v-text-field>
+    <v-text-field clearable :label="label" variant="underlined"></v-text-field>
     <span
       v-if="error"
       class="app-font-size-12 app-font-weight-600 app-color-danger py-2"

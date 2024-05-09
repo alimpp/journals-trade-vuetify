@@ -1,21 +1,21 @@
 <template>
   <div
-    class="create-profile-page app-flex app-justify-center app-align-center"
+    class="create-profile-page app-flex app-justify-center app-align-center app-h-100"
   >
     <div class="content">
-      <div class="w-100 app-flex">
-        <span class="app-font-size-14 app-font-weight-600 pt-1"
+      <div class="app-w-100 app-flex">
+        <span class="app-font-size-14 app-font-weight-600 app-pt-1"
           >Create Profile With</span
         >
         <span
-          class="app-font-size-18 app-font-weight-600 app-color-primary px-1"
+          class="app-font-size-18 app-font-weight-600 app-color-primary app-px-1"
           >Trade Journal</span
         >
       </div>
-      <div class="w-100 app-flex app-flex-column mt-5">
+      <div class="app-w-100 app-flex app-flex-column mt-5">
         <BaseInput label="Username" />
         <BaseInput label="Email" />
-        <BaseButton name="Create" width="120px" />
+        <BaseButton name="Create" width="110px" height="35px" />
       </div>
     </div>
   </div>
