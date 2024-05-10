@@ -14,14 +14,11 @@ export const GetCoins = () => {
 };
 
 export const RemoveCoin = (id) => {
-  console.log(id);
   const coins = localStorage.getItem("coins");
   let parsedList = JsonParser(coins);
-  console.log(parsedList);
   const targetCoin = parsedList.find((coin) => {
     return coin.coinId == id;
   });
-  console.log(targetCoin);
   parsedList = parsedList.filter((item) => {
     return item.coinId != targetCoin.coinId;
   });
