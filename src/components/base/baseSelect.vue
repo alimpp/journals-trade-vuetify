@@ -4,7 +4,7 @@
     v-model="selectedItem"
     :items="scheama"
     :label="label"
-    variant="solo"
+    :variant="type"
   ></v-select>
 </template>
 
@@ -32,6 +32,10 @@ const props = defineProps({
   scheama: {
     type: Array,
     default: [],
+  },
+  type: {
+    type: String,
+    default: "solo",
   },
 });
 </script>
