@@ -4,10 +4,14 @@
   >
     <div class="app-flex">
       <div class="app-w-200-px">
-        <BaseSelect label="Select Coin" type="outlined" />
+        <BaseSelect
+          label="Select Coin"
+          :scheama="coinsDS.coins"
+          type="outlined"
+        />
       </div>
       <div class="app-w-200-px mx-2">
-        <BaseSelect label="state" type="outlined" />
+        <BaseSelect label="State" :scheama="state" type="outlined" />
       </div>
     </div>
     <div class="app-flex app-mt-5">
@@ -50,7 +54,17 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from "vue";
 import BaseInput from "@/components/base/baseInput.vue";
 import BaseTextArea from "@/components/base/baseTextArea.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
+
+import { coinsDataStore } from "@/stores/coins/coinsDS";
+
+const coinsDS = coinsDataStore();
+const state = ref(["Target", "Stop", "In Position", "closed"]);
+
+onMounted(() => {
+  coinsDS.getCoins();
+});
 </script>
