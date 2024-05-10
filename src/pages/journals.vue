@@ -1,14 +1,14 @@
 <template>
   <div class="journals-page">
-    <div class="app-flex">
-      <div style="width: 200px">
+    <div class="app-flex app-p-l-20-px">
+      <div class="app-w-200-px">
         <BaseSelect
           label="Select Coin"
           :scheama="tableScheama.filterBy.coin"
           @selectValue="filteredByCoin"
         />
       </div>
-      <div style="width: 200px" class="mx-2">
+      <div class="mx-2 app-w-200-px">
         <BaseSelect
           label="Select State"
           :scheama="tableScheama.filterBy.state"
@@ -17,26 +17,48 @@
       </div>
     </div>
     <div class="app-flex">
-      <div class="app-flex app-flex-column app-w-90">
+      <div class="app-flex app-flex-column app-w-95 app-p-l-20-px">
         <TableLoading v-if="loading" />
         <JournalsTable
           v-else
           class="fade_animations"
           :tableScheama="tableScheama"
           :dataSource="tableDataSource"
+          @selectedRow="selectedRowHandler"
         />
       </div>
-      <div class="app-flex app-flex-column app-align-center app-mx-3 app-w-10">
-        <baseButton icon="plus" width="40px" height="40px" />
-        <baseButton class="mt-3" icon="edit" width="40px" height="40px" />
-        <baseButton class="mt-3" icon="delete" width="40px" height="40px" />
+      <div class="app-flex app-flex-column app-align-center app-mx-3 app-w-5">
+        <baseButton
+          icon="plus"
+          width="40px"
+          height="40px"
+          tooltip="Create New Journal"
+        />
+        <baseButton
+          :disabled="selectedRow == null"
+          class="mt-3"
+          icon="edit"
+          width="40px"
+          height="40px"
+          bg="secondary"
+          tooltip="Edit Selected Journal"
+        />
+        <baseButton
+          :disabled="selectedRow == null"
+          class="mt-3"
+          icon="delete"
+          width="40px"
+          height="40px"
+          bg="danger"
+          tooltip="Remove Selected Journal"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { journalsDataStore } from "@/stores/journals/journalsDS.js";
 
 import TableLoading from "@/components/tableLoading/index.vue";
@@ -45,6 +67,7 @@ import BaseSelect from "@/components/base/baseSelect.vue";
 import baseButton from "@/components/base/baseButton.vue";
 
 const journalsDS = journalsDataStore();
+const selectedRow = ref(null);
 
 const loading = computed(() => {
   return journalsDS.loading;
@@ -57,6 +80,10 @@ const tableScheama = computed(() => {
 const tableDataSource = computed(() => {
   return journalsDS.tableDataSource;
 });
+
+const selectedRowHandler = (param) => {
+  selectedRow.value = param;
+};
 
 const filteredByCoin = (item) => {
   journalsDS.filtredBy(item, "coin");
