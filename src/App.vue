@@ -19,10 +19,6 @@ const ThemeStatus = computed(() => {
   return ThemeDS.theme;
 });
 
-const HandleChangeTheme = () => {
-  ThemeDS.changeThemeStatus();
-};
-
 onMounted(async () => {
   await InitialingApplication();
 });

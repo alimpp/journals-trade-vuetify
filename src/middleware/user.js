@@ -1,4 +1,4 @@
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { GetProfile } from "@/api/profile";
 
 export const DetectUser = () => {
@@ -7,7 +7,8 @@ export const DetectUser = () => {
     const router = useRouter();
     router.push("/create-profile");
   } else {
+    const route = useRoute();
     const router = useRouter();
-    router.push("/journals");
+    router.push(`${route.path}`);
   }
 };

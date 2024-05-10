@@ -59,7 +59,7 @@ const username = computed(() => {
 const menuItems = ref([
   { id: "000", title: "Journals", path: "/journals" },
   { id: "002", title: "Create Journal", path: "/create-journal" },
-  { id: "003", title: "Coins List", path: "/coins-list" },
+  { id: "003", title: "Coins List", path: "/coin-list" },
   { id: "004", title: "Watch List", path: "/watch-list" },
   { id: "005", title: "Holder", path: "/holder" },
   { id: "001", title: "Profile", path: "/profile" },

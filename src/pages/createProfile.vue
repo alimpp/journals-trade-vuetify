@@ -32,6 +32,7 @@
           height="35px"
           :loading="loading"
           @click="createProfile"
+          tooltip="Create New Profile"
         />
       </div>
     </div>

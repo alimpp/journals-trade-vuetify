@@ -33,6 +33,7 @@
           width="40px"
           height="40px"
           tooltip="Create New Journal"
+          @click="createNewJournal"
         />
         <baseButton
           :disabled="selectedRow == null"
@@ -60,6 +61,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import { journalsDataStore } from "@/stores/journals/journalsDS.js";
+import { useRouter } from "vue-router";
 
 import TableLoading from "@/components/tableLoading/index.vue";
 import JournalsTable from "@/components/journals/table.vue";
@@ -68,6 +70,7 @@ import baseButton from "@/components/base/baseButton.vue";
 
 const journalsDS = journalsDataStore();
 const selectedRow = ref(null);
+const router = useRouter();
 
 const loading = computed(() => {
   return journalsDS.loading;
@@ -91,5 +94,9 @@ const filteredByCoin = (item) => {
 
 const filteredByState = (item) => {
   journalsDS.filtredBy(item, "state");
+};
+
+const createNewJournal = () => {
+  router.push("/create-journal");
 };
 </script>

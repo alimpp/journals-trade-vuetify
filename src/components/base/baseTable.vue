@@ -24,9 +24,6 @@ const ThemeStatus = computed(() => {
   return ThemeDS.theme;
 });
 
-const HandleChangeTheme = () => {
-  ThemeDS.changeThemeStatus();
-};
 const props = defineProps({
   tableType: {
     type: String,

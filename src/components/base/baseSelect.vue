@@ -17,10 +17,6 @@ const ThemeStatus = computed(() => {
   return ThemeDS.theme;
 });
 
-const HandleChangeTheme = () => {
-  ThemeDS.changeThemeStatus();
-};
-
 const emit = defineEmits(["selectValue"]);
 const selectedItem = ref(null);
 
