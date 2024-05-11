@@ -5,12 +5,28 @@
   font-family: sans-serif;
 }
 
+.app_link {
+  text-decoration: none;
+  list-style: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 5px;
+  color: #816fe9;
+}
+
 .app_border_radius {
   border-radius: 6px;
 }
 
 .app_active_route {
   border-bottom: 3px solid #fd7403;
+}
+.app_pointer {
+  cursor: pointer;
+}
+
+.app_overflow_hidden {
+  overflow: hidden;
 }
 
 .app-container {
@@ -23,26 +39,7 @@
   }
 }
 
-.app_pointer {
-  cursor: pointer;
-}
-
-.app_overflow_hidden {
-  overflow: hidden;
-}
-
-.app_link {
-  text-decoration: none;
-  list-style: none;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 0 5px;
-  color: #816fe9;
-}
-
-.fade_animations {
-  animation: 1s fade_animations;
-}
+/// *** custon scrollbar
 
 ::-webkit-scrollbar {
   width: 0px;
@@ -58,6 +55,12 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: #cac8c8;
+}
+
+/// *** custon animations
+
+.fade_animations {
+  animation: 1s fade_animations;
 }
 
 @keyframes fade_animations {

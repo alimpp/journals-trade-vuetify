@@ -1,6 +1,6 @@
 <template>
   <div
-    class="create-profile-page app-flex-column app-flex app-container app-w-100 app-h-100 slid-left-animation"
+    class="app_overflow_hidden app-flex-column app-flex app-container app-w-100 app-h-100 slid-left-animation"
   >
     <div class="app-flex">
       <div class="app-w-200-px">

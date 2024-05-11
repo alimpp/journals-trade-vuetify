@@ -1,5 +1,5 @@
 <template>
-  <div class="journals-page">
+  <div class="app_overflow_hidden">
     <div class="app-flex app-p-l-20-px">
       <div class="app-w-200-px">
         <BaseSelect
