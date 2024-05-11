@@ -22,6 +22,7 @@
         :title="coin.title"
         :subtitle="coin.subtitle"
         :text="coin.text"
+        :loading="coin.loading"
         @remove="removeCoin(coin.coinId)"
       />
     </div>

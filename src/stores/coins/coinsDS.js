@@ -18,8 +18,16 @@ export const coinsDataStore = defineStore("coinsStore", {
     },
 
     removeCoin(id) {
-      RemoveCoin(id);
-      this.getCoins();
+      let targetCoin = this.coins.find((coin) => {
+        return coin.coinId == id;
+      });
+      let coinIndex = this.coins.indexOf(targetCoin);
+      targetCoin.loading = true;
+      this.coins[coinIndex] = targetCoin;
+      setTimeout(() => {
+        RemoveCoin(id);
+        this.getCoins();
+      }, 1500);
     },
   },
 });
