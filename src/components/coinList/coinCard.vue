@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-mx-2 app-coin-card-width">
     <BaseCard
       class="slid-left-animation"
       :loading="loading"

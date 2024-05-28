@@ -7,7 +7,6 @@
     :text="text"
   >
     <v-card-actions>
-      {{ loading }}
       <slot name="actions"></slot>
     </v-card-actions>
   </v-card>

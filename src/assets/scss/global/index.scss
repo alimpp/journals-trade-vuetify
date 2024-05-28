@@ -84,3 +84,9 @@
     transform: translateX(0);
   }
 }
+
+.cards-container-handler {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
