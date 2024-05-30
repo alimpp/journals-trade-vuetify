@@ -1,3 +1,5 @@
+<!-- eslint-disable no-unused-vars -->
+<!-- eslint-disable no-unused-vars -->
 <template>
   <div>
     <v-tooltip :text="tooltip">
@@ -38,6 +40,7 @@
 <script setup>
 import { defineProps } from "vue";
 
+// eslint-disable-next-line no-unused-vars
 const props = defineProps({
   name: {
     type: String,
