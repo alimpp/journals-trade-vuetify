@@ -14,7 +14,7 @@ export const journalsDataStore = defineStore("journalsStore", {
         "State",
       ],
       filterBy: {
-        coin: ["All", "BTC", "FTM", "GRT"],
+        coin: [],
         state: ["All", "Target", "Stop", "In Position", "closed"],
       },
     },

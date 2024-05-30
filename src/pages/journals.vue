@@ -59,9 +59,10 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { journalsDataStore } from "@/stores/journals/journalsDS.js";
 import { useRouter } from "vue-router";
+import { coinsDataStore } from "@/stores/coins/coinsDS.js";
 
 import TableLoading from "@/components/tableLoading/index.vue";
 import JournalsTable from "@/components/journals/table.vue";
@@ -69,6 +70,7 @@ import BaseSelect from "@/components/base/baseSelect.vue";
 import baseButton from "@/components/base/baseButton.vue";
 
 const journalsDS = journalsDataStore();
+const coinsDS = coinsDataStore();
 const selectedRow = ref(null);
 const router = useRouter();
 
@@ -99,4 +101,9 @@ const filteredByState = (item) => {
 const createNewJournal = () => {
   router.push("/create-journal");
 };
+
+onMounted(() => {
+  coinsDS.getCoins();
+  journalsDS.tableSchema.filterBy.coin = coinsDS.coins;
+});
 </script>
