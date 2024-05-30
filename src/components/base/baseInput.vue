@@ -7,7 +7,7 @@
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       :type="type"
-      :class="{ error: error }"
+      :class="{ error: error, 'app-color-white': ThemeStatus === 'dark' }"
     />
     <span
       v-if="error"
@@ -19,7 +19,13 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, computed } from "vue";
+import { themeDataStore } from "@/stores/theme";
+const ThemeDS = themeDataStore();
+
+const ThemeStatus = computed(() => {
+  return ThemeDS.theme;
+});
 
 const props = defineProps({
   label: {
