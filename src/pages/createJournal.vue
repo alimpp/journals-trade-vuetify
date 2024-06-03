@@ -59,7 +59,7 @@
       <div>
         <BaseTextArea label="Entry Description" />
       </div>
-      <div class="app-w-200 mx-2">
+      <div class="mx-2">
         <BaseTextArea label="Exit Description" />
       </div>
       <div class="app-w-200">
