@@ -1,14 +1,14 @@
 <template>
   <div class="app_overflow_hidden">
     <div class="app-flex app-p-l-20-px">
-      <div class="app-w-200-px">
+      <div class="app-w-200">
         <BaseSelect
           label="Select Coin"
           :scheama="tableScheama.filterBy.coin"
           @selectValue="filteredByCoin"
         />
       </div>
-      <div class="mx-2 app-w-200-px">
+      <div class="mx-2 app-w-200">
         <BaseSelect
           label="Select State"
           :scheama="tableScheama.filterBy.state"

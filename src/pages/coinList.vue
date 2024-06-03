@@ -3,7 +3,7 @@
     class="app_overflow_hidden app-flex app-flex-column app-container app- app-h-90 app-w-100"
   >
     <div class="app-flex app-align-center app-w-100 app-mx-2">
-      <div class="app-w-200-px">
+      <div class="app-w-200">
         <BaseInput label="Coin Name" v-model="title" />
       </div>
       <BaseButton

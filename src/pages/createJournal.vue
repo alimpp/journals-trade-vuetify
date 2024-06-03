@@ -3,30 +3,30 @@
     class="app_overflow_hidden app-flex-column app-flex app-container app-w-100 app-h-100 slid-left-animation"
   >
     <div class="app-flex">
-      <div class="app-w-200-px">
+      <div class="app-w-200">
         <BaseSelect
           label="Select Coin"
           :scheama="coinsDS.coins"
           type="outlined"
         />
       </div>
-      <div class="app-w-200-px mx-2">
+      <div class="app-w-200 mx-2">
         <BaseSelect label="State" :scheama="state" type="outlined" />
       </div>
     </div>
     <div class="app-flex app-mt-5">
-      <div class="app-w-200-px">
+      <div class="app-w-200">
         <BaseInput label="Entry Price" />
       </div>
-      <div class="app-w-200-px mx-2">
+      <div class="app-w-200 mx-2">
         <BaseInput label="Stop Loss" />
       </div>
     </div>
     <div class="app-flex app-mt-5">
-      <div class="app-w-200-px">
+      <div class="app-w-200">
         <BaseInput label="Entry Time" />
       </div>
-      <div class="app-w-200-px mx-2">
+      <div class="app-w-200 mx-2">
         <BaseInput label="Exit Time" />
       </div>
       <div class="app-w-200">
@@ -34,13 +34,13 @@
       </div>
     </div>
     <div class="app-flex app-mt-5">
-      <div class="app-w-200-">
+      <div class="app-w-200">
         <BaseInput label="Profit USDT" />
       </div>
-      <div class="app-w-200-px mx-2">
+      <div class="app-w-200 mx-2">
         <BaseInput label="Loss USDT" />
       </div>
-      <div class="app-w-200-px mx-2">
+      <div class="app-w-200">
         <BaseInput label="Date" />
       </div>
     </div>
@@ -62,7 +62,7 @@
       <div class="app-w-200 mx-2">
         <BaseTextArea label="Exit Description" />
       </div>
-      <div class="app-w-200 mx-2">
+      <div class="app-w-200">
         <BaseInput label="Flag" />
       </div>
     </div>
