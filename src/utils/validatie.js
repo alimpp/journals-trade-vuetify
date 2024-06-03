@@ -27,3 +27,8 @@ export const validateEmail = (email) => {
     };
   }
 };
+
+export const validateNumber = (param) => {
+  const reg = /^[0-9]+$/;
+  return reg.test(param);
+};
