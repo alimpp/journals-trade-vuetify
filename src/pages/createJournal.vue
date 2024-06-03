@@ -24,11 +24,11 @@
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <!-- <BaseInput label="Entry Time" /> -->
-        <VTimePicker theme="dark" />
+        <BaseInput label="Entry Time" />
+        <timePicker/>
       </div>
       <div class="app-w-200 mx-2">
-        <!-- <BaseInput label="Exit Time" /> -->
+        <BaseInput label="Exit Time" />
       </div>
       <div class="app-w-200">
         <BaseInput label="Entry USDT" />
@@ -85,6 +85,7 @@ import BaseInput from "@/components/base/baseInput.vue";
 import BaseTextArea from "@/components/base/baseTextArea.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
 import BaseButton from "@/components/base/baseButton.vue";
+import timePicker from "@/components/timePicker/index";
 
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 
