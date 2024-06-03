@@ -72,6 +72,7 @@
       width="100px"
       height="35px"
       class="mt-3"
+      @click="createJournal"
     />
   </div>
 </template>
@@ -87,6 +88,8 @@ import { coinsDataStore } from "@/stores/coins/coinsDS";
 
 const coinsDS = coinsDataStore();
 const state = ref(["Target", "Stop", "In Position", "closed"]);
+
+const createJournal = () => {};
 
 onMounted(() => {
   coinsDS.getCoins();
