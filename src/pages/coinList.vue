@@ -19,6 +19,7 @@
       <CoinCard
         class="app-mt-2"
         v-for="coin in dataSource"
+        :key="coin.id"
         :title="coin.title"
         :subtitle="coin.subtitle"
         :text="coin.text"
