@@ -8,6 +8,7 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :type="type"
       :class="{ error: error, 'app-color-white': ThemeStatus === 'dark' }"
+      :disabled="disabled"
     />
     <span
       v-if="error"
@@ -28,6 +29,11 @@ const ThemeStatus = computed(() => {
 });
 
 const props = defineProps({
+  disabled: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
   label: {
     type: String,
     default: "",
