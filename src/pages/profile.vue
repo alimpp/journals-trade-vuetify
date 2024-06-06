@@ -68,7 +68,6 @@ import { validateUsername } from "@/utils/validatie.js";
 import BaseInput from "@/components/base/baseInput.vue";
 import BaseButton from "@/components/base/baseButton.vue";
 import BaseDivider from "@/components/base/baseDivider.vue";
-import Doughnut from "@/components/charts/Doughnut.vue";
 
 const profileDS = profileDataStore();
 const themeDS = themeDataStore();
@@ -76,16 +75,6 @@ const loading = ref(false);
 
 const profileInformation = computed(() => {
   return profileDS.user;
-});
-
-const data = ref({
-  labels: ["Total Positions", "Targets", "Stop Loss"],
-  datasets: [
-    {
-      backgroundColor: ["#7d70f1", "#59bc1b", "#ff3333"],
-      data: [40, 20, 80],
-    },
-  ],
 });
 
 const form = ref({

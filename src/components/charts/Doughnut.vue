@@ -20,5 +20,8 @@ const props = defineProps({
 const options = ref({
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: true,
+  },
 });
 </script>
