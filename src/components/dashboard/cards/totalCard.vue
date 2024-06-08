@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app-w-30 app_border_radius app-py-10 app-px-4 app-flex app-flex-column"
+    class="app-w-30 app_border_radius app-py-10 app-px-4 app-flex app-flex-column background"
   >
     <span>{{ title }}</span>
     <span>{{ date }}</span>
@@ -26,4 +26,14 @@ const count = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.background {
+  background: rgb(37, 74, 255);
+  background: linear-gradient(
+    175deg,
+    rgba(37, 74, 255, 1) 12%,
+    rgba(92, 123, 254, 1) 53%,
+    rgba(190, 219, 255, 1) 94%
+  );
+}
+</style>
