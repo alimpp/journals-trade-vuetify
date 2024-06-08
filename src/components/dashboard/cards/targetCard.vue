@@ -9,7 +9,9 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { defineProps, computed } from "vue";
+
+const props = defineProps({});
 
 const title = computed(() => {
   return;
