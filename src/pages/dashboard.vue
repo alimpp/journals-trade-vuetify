@@ -2,9 +2,9 @@
   <div class="app-flex app-flex-column app-container app-w-100">
     <BaseDivider content="DASHBOARD" width="105px" />
     <div class="app-flex app-w-100 app-mt-5">
-      <TotalCard :data="cardsDataSource" />
-      <StopCard :data="cardsDataSource" class="app-mx-5" />
-      <TargetCard :data="cardsDataSource" />
+      <TotalCard :data="cardsDataSource.total" />
+      <StopCard :data="cardsDataSource.stop" class="app-mx-5" />
+      <TargetCard :data="cardsDataSource.target" />
     </div>
     <div class="app-flex app-w-100">
       <div
@@ -41,7 +41,23 @@ const data = ref({
 });
 
 const cardsDataSource = computed(() => {
-  return;
+  return {
+    total: {
+      title: "Total Positions",
+      text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
+      count: "30",
+    },
+    stop: {
+      title: "Stop Loss Positions",
+      text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
+      count: "20",
+    },
+    target: {
+      title: "Target Positions",
+      text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
+      count: "10",
+    },
+  };
 });
 
 const fullTargetsDataSource = computed(() => {
