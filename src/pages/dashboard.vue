@@ -2,9 +2,9 @@
   <div class="app-flex app-flex-column app-container app-w-100">
     <BaseDivider content="DASHBOARD" width="105px" />
     <div class="app-flex app-w-100 app-mt-5">
-      <TotalCard />
-      <StopCard class="app-mx-5" />
-      <TargetCard />
+      <TotalCard :data="cardsDataSource" />
+      <StopCard :data="cardsDataSource" class="app-mx-5" />
+      <TargetCard :data="cardsDataSource" />
     </div>
     <div class="app-flex app-w-100">
       <div
@@ -15,14 +15,14 @@
         </div>
       </div>
       <div class="app-flex app-w-60 app-align-center">
-        <FullTargetBar />
+        <FullTargetBar :data="fullTargetsDataSource" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import Doughnut from "@/components/charts/Doughnut.vue";
 import BaseDivider from "@/components/base/baseDivider.vue";
 import TotalCard from "@/components/dashboard/cards/totalCard.vue";
@@ -38,5 +38,13 @@ const data = ref({
       data: [80, 20, 60],
     },
   ],
+});
+
+const cardsDataSource = computed(() => {
+  return;
+});
+
+const fullTargetsDataSource = computed(() => {
+  return;
 });
 </script>
