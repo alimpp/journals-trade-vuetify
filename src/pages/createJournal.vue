@@ -16,7 +16,7 @@
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Entry Price" />
+        <BaseInput label="Entry Price" v-model="journalForm.entryPrice" />
       </div>
       <div class="app-w-200 mx-2">
         <BaseInput label="Stop Loss" />
@@ -24,11 +24,7 @@
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Entry Time" />
-        <timePicker/>
-      </div>
-      <div class="app-w-200 mx-2">
-        <BaseInput label="Exit Time" />
+        <timePicker class="app-mt-6" @handleEmitTime="selectTime"/>
       </div>
       <div class="app-w-200">
         <BaseInput label="Entry USDT" />
@@ -89,12 +85,20 @@ import timePicker from "@/components/timePicker/index";
 
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 
-// const journalForm = ref({});
+const journalForm = ref({
+  entryTime: "",
+  entryPrice: ""
+});
 
 const coinsDS = coinsDataStore();
 const state = ref(["Target", "Stop", "In Position", "closed"]);
 
-const createJournal = () => {};
+const createJournal = () => {
+  console.log(journalForm.value)
+};
+const selectTime= (param)=> {
+  journalForm.value.entryTime= param
+};
 
 onMounted(() => {
   coinsDS.getCoins();

@@ -1,68 +1,55 @@
 <template>
-    <v-container>
-      <v-row justify="space-around">
-        <v-col
-          cols="11"
-          sm="5"
-        >
-          <v-text-field
-            v-model="time"
-            :active="menu2"
-            :focus="menu2"
-            label="Picker in menu"
-            prepend-icon="mdi-clock-time-four-outline"
-            readonly
-          >
-            <v-menu
-              v-model="menu2"
-              :close-on-content-click="false"
-              activator="parent"
-              transition="scale-transition"
-            >
-              <v-time-picker
-                v-if="menu2"
-                v-model="time"
-                full-width
-              ></v-time-picker>
-            </v-menu>
-          </v-text-field>
-        </v-col>
-  
-        <v-col
-          cols="11"
-          sm="5"
-        >
-          <v-text-field
-            v-model="time"
-            :active="modal2"
-            :focused="modal2"
-            label="Picker in dialog"
-            prepend-icon="mdi-clock-time-four-outline"
-            readonly
-          >
-            <v-dialog
-              v-model="modal2"
-              activator="parent"
-              width="auto"
-            >
-              <v-time-picker
-                v-if="modal2"
-                v-model="time"
-              ></v-time-picker>
-            </v-dialog>
-          </v-text-field>
-        </v-col>
-      </v-row>
-    </v-container>
-  </template>
-  <script>
-    export default {
-      data () {
-        return {
-          time: null,
-          menu2: false,
-          modal2: false,
-        }
-      },
-    }
+  <div >
+    <div class="app-flex app-flex-column" @click="openState = !openState">
+<div class="app-flex">
+  <v-icon
+      class="app_pointer fade_animations"
+      @click="HandleChangeTheme"
+      >mdi-alarm-plus</v-icon
+    >
+    <span class="app-px-1">Entry Time</span>
+</div>
+<span class="app-px-7">{{ selectTime }}</span>
+    
+  </div>
+  <div class="time-picker-content" v-if="openState" >
+<div class="time-picker">
+  <v-time-picker
+  v-model="selectTime"
+  format="24hr"
+  ></v-time-picker>
+</div>
+    </div>
+  </div>
+ </template>
+  <script setup>
+  import { ref,watch,defineEmits } from 'vue';
+  const openState= ref(false);
+  const selectTime= ref(null);
+  const emit= defineEmits(['handleEmitTime']);
+  watch(selectTime,()=>{
+    emit('handleEmitTime',selectTime.value)
+  })
+
   </script>
+
+  <style scoped>
+  .time-picker-content{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.624);
+  }
+  .time-picker{
+    position: absolute;
+
+  }
+</style>
