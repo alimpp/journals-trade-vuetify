@@ -19,7 +19,7 @@
         <BaseInput label="Entry Price" v-model="journalForm.entryPrice" />
       </div>
       <div class="app-w-200 mx-2">
-        <BaseInput label="Stop Loss" />
+        <BaseInput label="Stop Loss" v-model="journalForm.stopLoss"/>
       </div>
     </div>
     <div class="app-flex app-mt-5">
@@ -27,40 +27,40 @@
         <timePicker class="app-mt-6" @handleEmitTime="selectTime"/>
       </div>
       <div class="app-w-200">
-        <BaseInput label="Entry USDT" />
+        <BaseInput label="Entry USDT" v-model="journalForm.entryUSDT"/>
       </div>
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Profit USDT" />
+        <BaseInput label="Profit USDT" v-model="journalForm.profitUSDT"/>
       </div>
       <div class="app-w-200 mx-2">
-        <BaseInput label="Loss USDT" />
+        <BaseInput label="Loss USDT" v-model="journalForm.lossUSDT"/>
       </div>
       <div class="app-w-200">
-        <BaseInput label="Date" />
+        <BaseInput label="Date" v-model="journalForm.date"/>
       </div>
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Target 1" />
+        <BaseInput label="Target 1" v-model="journalForm.target1"/>
       </div>
       <div class="app-w-200 mx-2">
-        <BaseInput label="Target 2" />
+        <BaseInput label="Target 2" v-model="journalForm.target2"/>
       </div>
       <div class="app-w-200">
-        <BaseInput label="Target 3" />
+        <BaseInput label="Target 3" v-model="journalForm.target3"/>
       </div>
     </div>
     <div class="app-flex">
       <div>
-        <BaseTextArea label="Entry Description" />
+        <BaseTextArea label="Entry Description" v-model="journalForm.entryDescription"/>
       </div>
       <div class="mx-2">
-        <BaseTextArea label="Exit Description" />
+        <BaseTextArea label="Exit Description" v-model="journalForm.exitDescription"/>
       </div>
       <div class="app-w-200">
-        <BaseInput label="Flag" />
+        <BaseInput label="Flag" v-model="journalForm.flag"/>
       </div>
     </div>
     <BaseButton
@@ -87,7 +87,18 @@ import { coinsDataStore } from "@/stores/coins/coinsDS";
 
 const journalForm = ref({
   entryTime: "",
-  entryPrice: ""
+  entryPrice: "",
+  entryUSDT: "",
+  stopLoss: "",
+  profitUSDT: "",
+  lossUSDT: "",
+  date: "",
+  target1: "",
+  target2: "",
+  target3: "",
+  entryDescription: "",
+  exitDescription: "",
+  flag: "",
 });
 
 const coinsDS = coinsDataStore();
