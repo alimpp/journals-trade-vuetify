@@ -82,7 +82,7 @@ import BaseTextArea from "@/components/base/baseTextArea.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
 import BaseButton from "@/components/base/baseButton.vue";
 import timePicker from "@/components/timePicker/index";
-import validateNumber from "@utils/validate.js";
+// import { validateNumber } from "@/utils/validatie.js";
 
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 
