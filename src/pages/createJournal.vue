@@ -82,6 +82,7 @@ import BaseTextArea from "@/components/base/baseTextArea.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
 import BaseButton from "@/components/base/baseButton.vue";
 import timePicker from "@/components/timePicker/index";
+import validateNumber from "@utils/validate.js";
 
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 
@@ -99,6 +100,61 @@ const journalForm = ref({
   entryDescription: "",
   exitDescription: "",
   flag: "",
+});
+
+const  validate = ref({
+  entryTime: {
+    state: false,
+    text: ""
+  },
+  entryPrice: {
+    state: false,
+    text: "",
+  },
+  entryUSDT: {
+    state: false,
+    text: "",
+  },
+  stopLoss: {
+    state: false,
+    text: "",
+  },
+  profitUSDT: {
+    state: false,
+    text: "",
+  },
+  lossUSDT: {
+    state: false,
+    text: "",
+  },
+  date: {
+    state: false,
+    text: "",
+  },
+  target1: {
+    state: false,
+    text: "",
+  },
+  target2: {
+    state: false,
+    text: "",
+  },
+  target3: {
+    state: false,
+    text: "",
+  },
+  entryDescription: {
+    state: false,
+    text: "",
+  },
+  exitDescription: {
+    state: false,
+    text: "",
+  },
+  flag: {
+    state: false,
+    text: "",
+  },
 });
 
 const coinsDS = coinsDataStore();
