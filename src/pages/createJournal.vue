@@ -16,10 +16,19 @@
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Entry Price" v-model="journalForm.entryPrice" />
+        <BaseInput 
+        label="Entry Price" 
+        v-model="journalForm.entryPrice"
+        :error="error.entryPrice.state" 
+        :messageError="error.entryPrice.text"
+        />
       </div>
       <div class="app-w-200 mx-2">
-        <BaseInput label="Stop Loss" v-model="journalForm.stopLoss"/>
+        <BaseInput label="Stop Loss" 
+        v-model="journalForm.stopLoss"
+        :error="error.stopLoss.state" 
+        :messageError="error.stopLoss.text"
+        />
       </div>
     </div>
     <div class="app-flex app-mt-5">
@@ -27,29 +36,50 @@
         <timePicker class="app-mt-6" @handleEmitTime="selectTime"/>
       </div>
       <div class="app-w-200">
-        <BaseInput label="Entry USDT" v-model="journalForm.entryUSDT"/>
+        <BaseInput label="Entry USDT" 
+        v-model="journalForm.entryUSDT"
+        :error="error.entryUSDT.state"
+        :messageError="error.entryUSDT.text"
+        />
       </div>
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Profit USDT" v-model="journalForm.profitUSDT"/>
+        <BaseInput label="Profit USDT" 
+        v-model="journalForm.profitUSDT"
+        />
       </div>
       <div class="app-w-200 mx-2">
         <BaseInput label="Loss USDT" v-model="journalForm.lossUSDT"/>
       </div>
       <div class="app-w-200">
-        <BaseInput label="Date" v-model="journalForm.date"/>
+        <BaseInput label="Date" 
+        v-model="journalForm.date"
+        :error="error.date.state"
+        :messageError="error.date.text"
+        />
       </div>
     </div>
     <div class="app-flex app-mt-5">
       <div class="app-w-200">
-        <BaseInput label="Target 1" v-model="journalForm.target1"/>
+        <BaseInput label="Target 1" 
+        v-model="journalForm.target1"
+        :error="error.target1.state"
+        :messageError="error.target1.text"
+        />
       </div>
       <div class="app-w-200 mx-2">
-        <BaseInput label="Target 2" v-model="journalForm.target2"/>
-      </div>
+        <BaseInput label="Target 2" 
+        v-model="journalForm.target2"
+        :error="error.target2.state"
+        :messageError="error.target2.text"
+        />      </div>
       <div class="app-w-200">
-        <BaseInput label="Target 3" v-model="journalForm.target3"/>
+        <BaseInput label="Target 3" 
+        v-model="journalForm.target3"
+        :error="error.target3.state"
+        :messageError="error.target3.text"
+        />
       </div>
     </div>
     <div class="app-flex">
@@ -69,7 +99,7 @@
       width="100px"
       height="35px"
       class="mt-3"
-      @click="createJournal"
+      @click="createJournal,handleValidate()"
     />
   </div>
 </template>
@@ -82,8 +112,6 @@ import BaseTextArea from "@/components/base/baseTextArea.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
 import BaseButton from "@/components/base/baseButton.vue";
 import timePicker from "@/components/timePicker/index";
-// import { validateNumber } from "@/utils/validatie.js";
-
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 
 const journalForm = ref({
@@ -91,18 +119,14 @@ const journalForm = ref({
   entryPrice: "",
   entryUSDT: "",
   stopLoss: "",
-  profitUSDT: "",
-  lossUSDT: "",
   date: "",
   target1: "",
   target2: "",
   target3: "",
   entryDescription: "",
-  exitDescription: "",
-  flag: "",
 });
 
-const  validate = ref({
+const  error = ref({
   entryTime: {
     state: false,
     text: ""
@@ -116,14 +140,6 @@ const  validate = ref({
     text: "",
   },
   stopLoss: {
-    state: false,
-    text: "",
-  },
-  profitUSDT: {
-    state: false,
-    text: "",
-  },
-  lossUSDT: {
     state: false,
     text: "",
   },
@@ -147,15 +163,74 @@ const  validate = ref({
     state: false,
     text: "",
   },
-  exitDescription: {
-    state: false,
-    text: "",
-  },
-  flag: {
-    state: false,
-    text: "",
-  },
 });
+
+const handleValidate = ()=>{
+  let accessToCreate = true;
+  if (!validateNumber(journalForm.value.entryPrice)){
+    accessToCreate = false;
+    error.value.entryPrice.state = true;
+    error.value.entryPrice.text = "price is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.entryPrice.state = false;
+    error.value.entryPrice.text = ""
+  }
+  if (!validateNumber(journalForm.value.entryUSDT)){
+    accessToCreate = false;
+    error.value.entryUSDT.state = true;
+    error.value.entryUSDT.text = "'Entry USDT' is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.entryUSDT.state = false;
+    error.value.entryUSDT.text = ""
+  }
+  if (!validateNumber(journalForm.value.stopLoss)){
+    accessToCreate = false;
+    error.value.stopLoss.state = true;
+    error.value.stopLoss.text = "'Stop Loss' is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.stopLoss.state = false;
+    error.value.stopLoss.text = ""
+  }
+  if (!validateNumber(journalForm.value.date)){
+    accessToCreate = false;
+    error.value.date.state = true;
+    error.value.date.text = "'Date' is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.date.state = false;
+    error.value.date.text = ""
+  }
+  if (!validateNumber(journalForm.value.target1)){
+    accessToCreate = false;
+    error.value.target1.state = true;
+    error.value.target1.text = "'Target1' is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.target1.state = false;
+    error.value.target1.text = ""
+  }
+  if (!validateNumber(journalForm.value.target2)){
+    accessToCreate = false;
+    error.value.target2.state = true;
+    error.value.target2.text = "'Target2' is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.target2.state = false;
+    error.value.target2.text = ""
+  }
+  if (!validateNumber(journalForm.value.target3)){
+    accessToCreate = false;
+    error.value.target3.state = true;
+    error.value.target3.text = "'Target3' is requied!!!"
+  }else {
+    accessToCreate = true;
+    error.value.target3.state = false;
+    error.value.target3.text = ""
+  }
+}
 
 const coinsDS = coinsDataStore();
 const state = ref(["Target", "Stop", "In Position", "closed"]);
