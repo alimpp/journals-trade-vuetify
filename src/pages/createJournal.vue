@@ -40,6 +40,7 @@
         v-model="journalForm.entryUSDT"
         :error="error.entryUSDT.state"
         :messageError="error.entryUSDT.text"
+        
         />
       </div>
     </div>
