@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app-w-30 app_border_radius app-py-10 app-px-4 app-flex background app-py-8 animation"
+    class="app-w-30 app_border_radius app-py-10 app-px-4 app-flex background app-py-8"
   >
     <div class="app-flex app-flex-column app-w-60">
       <span class="app-font-size-20 app-font-weight-600">{{ data.title }}</span>
@@ -35,19 +35,5 @@ const props = defineProps({
     rgba(254, 92, 109, 1) 58%,
     rgba(241, 239, 240, 1) 100%
   );
-}
-
-.animation {
-  animation: 3s fade;
-  animation-delay: 0.1s;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 </style>

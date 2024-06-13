@@ -2,22 +2,21 @@
   <div>
     <div class="app-flex app-flex-column" @click="openState = !openState">
       <div class="app-flex">
-        <v-icon class="app_pointer fade_animations" @click="HandleChangeTheme"
-          >mdi-alarm-plus</v-icon
-        >
-        <span class="app-px-1">Entry Time</span>
+        <v-icon icon="$calendar"></v-icon>
+        <span class="app-px-1">Date</span>
       </div>
       <div class="select-time app-mt-2">
-        <span>{{ selectTime }}</span>
+        <span>{{ selectDate }}</span>
       </div>
     </div>
-    <div class="time-picker-content" v-if="openState">
-      <div class="time-picker">
-        <v-time-picker
-          v-model="selectTime"
-          format="24hr"
+    <div class="datr-picker-content" v-if="openState">
+      <div class="datr-picker">
+        <v-date-picker
+          v-model="selectDate"
+          show-adjacent-months
           :theme="ThemeStatus"
-        ></v-time-picker>
+          max-width="368"
+        ></v-date-picker>
         <div class="app-flex app-w-100">
           <BaseButton
             class="app-mt-3"
@@ -27,7 +26,7 @@
             bg="danger"
             :loading="loading"
             @click="cancel()"
-            tooltip="Cancel Select Time Operation"
+            tooltip="Cancel Select Date Operation"
           />
           <BaseButton
             class="app-mt-3 app-mx-2"
@@ -36,7 +35,7 @@
             height="35px"
             :loading="loading"
             @click="openState = !openState"
-            tooltip="Submit Entry Time"
+            tooltip="Submit Selected Date"
           />
         </div>
       </div>
@@ -50,7 +49,7 @@ import BaseButton from "../base/baseButton.vue";
 
 const ThemeDS = themeDataStore();
 const openState = ref(false);
-const selectTime = ref(null);
+const selectDate = ref(null);
 
 const ThemeStatus = computed(() => {
   return ThemeDS.theme;
@@ -58,19 +57,19 @@ const ThemeStatus = computed(() => {
 
 const emit = defineEmits(["handleEmitTime"]);
 
-watch(selectTime, () => {
-  emit("handleEmitTime", selectTime.value);
+watch(selectDate, () => {
+  emit("handleEmitTime", selectDate.value);
 });
 
 const cancel = () => {
-  selectTime.value = null;
-  emit("handleEmitTime", selectTime.value);
+  selectDate.value = null;
+  emit("handleEmitTime", selectDate.value);
   openState.value = false;
 };
 </script>
 
 <style scoped>
-.time-picker-content {
+.datr-picker-content {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -85,7 +84,7 @@ const cancel = () => {
   background-color: rgba(0, 0, 0, 0.624);
   flex-direction: column;
 }
-.time-picker {
+.datr-picker {
   position: absolute;
 }
 .select-time {

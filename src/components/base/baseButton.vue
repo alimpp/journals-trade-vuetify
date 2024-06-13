@@ -1,5 +1,3 @@
-<!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable no-unused-vars -->
 <template>
   <div>
     <v-tooltip :text="tooltip">
