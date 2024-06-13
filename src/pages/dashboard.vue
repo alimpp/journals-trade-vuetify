@@ -61,6 +61,6 @@ const cardsDataSource = computed(() => {
 });
 
 const fullTargetsDataSource = computed(() => {
-  return;
+  return "";
 });
 </script>

@@ -17,6 +17,7 @@
 <script setup>
 import { defineProps } from "vue";
 
+// eslint-disable-next-line no-unused-vars
 const props = defineProps({
   data: {
     type: Object,
@@ -26,7 +27,8 @@ const props = defineProps({
 
 <style scoped>
 .background {
-  color: #fff;  background: rgb(255, 37, 60);
+  color: #fff;
+  background: rgb(255, 37, 60);
   background: linear-gradient(
     175deg,
     rgba(255, 37, 60, 1) 12%,
