@@ -1,8 +1,12 @@
 <template>
   <div
     class="app-flex-column app-flex app-container app-w-100 slid-left-animation"
-  >
-    <div class="app-flex">
+  ><div class="app-flex">
+    <div class="app-w-200">
+      <timePicker class="app-mt-6" @handleEmitTime="selectTime"/>
+    </div>
+  </div>
+    <div class="app-flex app-mt-7">
       <div class="app-w-200">
         <BaseSelect
           label="Select Coin"
@@ -29,11 +33,6 @@
         :error="error.stopLoss.state" 
         :messageError="error.stopLoss.text"
         />
-      </div>
-    </div>
-    <div class="app-flex app-mt-5">
-      <div class="app-w-200">
-        <timePicker class="app-mt-6" @handleEmitTime="selectTime"/>
       </div>
       <div class="app-w-200">
         <BaseInput label="Entry USDT" 
@@ -171,7 +170,7 @@ const handleValidate = ()=>{
   if (!validateNumber(journalForm.value.entryPrice)){
     accessToCreate = false;
     error.value.entryPrice.state = true;
-    error.value.entryPrice.text = "price is requied!!!"
+    error.value.entryPrice.text = "Price is requied!!!"
   }else {
     accessToCreate = true;
     error.value.entryPrice.state = false;
