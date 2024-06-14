@@ -55,9 +55,13 @@
         width="40px"
         height="41px"
         tooltip="Add Target"
+        @click="addTarget"
       />
-      <div class="app-w-200 app-mx-2">
-        <BaseInput label="Target 1" />
+      <div
+        class="app-w-200 app-mx-2"
+        v-for="target in journalForm.targets"
+      >
+        <BaseInput :label="target.label" />
       </div>
     </div>
     <div class="app-flex app-mt-2">
@@ -99,6 +103,7 @@ const journalForm = ref({
   stopLoss: "",
   entryUSDT: "",
   entryDescription: "",
+  targets: [],
 });
 
 const error = ref({
@@ -179,6 +184,15 @@ const createJournal = () => {
 };
 const selectTime = (param) => {
   journalForm.value.entryTime = param;
+};
+
+const addTarget = () => {
+  const target = {
+    id: journalForm.value.targets.length+=1,
+    label: `Target ${journalForm.value.targets.length+=1}`,
+    value: "",
+  };
+  journalForm.value.targets.push(target)
 };
 
 onMounted(() => {
