@@ -6,7 +6,6 @@
         v-for="item in dataSource"
         :key="item.id"
         @click="selectRow(item)"
-        :class="{ 'app-bg-primary': item.id == selectedRow.id }"
       >
         <td>{{ item.coin }}</td>
         <td>{{ item.entryPrice }}</td>

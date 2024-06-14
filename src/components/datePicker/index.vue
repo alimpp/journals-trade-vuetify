@@ -55,15 +55,15 @@ const ThemeStatus = computed(() => {
   return ThemeDS.theme;
 });
 
-const emit = defineEmits(["handleEmitTime"]);
+const emit = defineEmits(["handleEmitDate"]);
 
 watch(selectDate, () => {
-  emit("handleEmitTime", selectDate.value);
+  emit("handleEmitDate", selectDate.value);
 });
 
 const cancel = () => {
   selectDate.value = null;
-  emit("handleEmitTime", selectDate.value);
+  emit("handleEmitDate", selectDate.value);
   openState.value = false;
 };
 </script>

@@ -7,7 +7,7 @@
         <TimePicker class="app-mt-6" @handleEmitTime="selectTime" />
       </div>
       <div class="app-w-30 app-mx-2">
-        <DatePicker class="app-mt-6" @handleEmitTime="selectTime" />
+        <DatePicker class="app-mt-6" @handleEmitDate="selectDate" />
       </div>
     </div>
     <div class="app-flex app-mt-7">
@@ -16,10 +16,17 @@
           label="Select Coin"
           :scheama="coinsDS.coins"
           type="outlined"
+          v-model="journalForm.coin"
         />
+        {{ journalForm.state }}
       </div>
       <div class="app-w-200 mx-2">
-        <BaseSelect label="State" :scheama="state" type="outlined" />
+        <BaseSelect
+          label="State"
+          :scheama="state"
+          type="outlined"
+          v-model="journalForm.state"
+        />
       </div>
     </div>
     <div class="app-flex app-mt-5">
@@ -89,7 +96,7 @@
       width="100px"
       height="35px"
       class="mt-3"
-      @click="createJournal, handleValidate()"
+      @click="createJournal"
     />
   </div>
 </template>
@@ -104,6 +111,7 @@ import BaseButton from "@/components/base/baseButton.vue";
 import TimePicker from "@/components/timePicker/index";
 import DatePicker from "@/components/datePicker/index";
 import { coinsDataStore } from "@/stores/coins/coinsDS";
+import { journalsDataStore } from "@/stores/journals/journalsDS";
 
 const journalForm = ref({
   entryTime: "",
@@ -138,25 +146,13 @@ const error = ref({
     state: false,
     text: "",
   },
-  target1: {
-    state: false,
-    text: "",
-  },
-  target2: {
-    state: false,
-    text: "",
-  },
-  target3: {
-    state: false,
-    text: "",
-  },
-  entryDescription: {
-    state: false,
-    text: "",
-  },
 });
 
-const handleValidate = () => {
+const coinsDS = coinsDataStore();
+const state = ref(["In Position", "Order in Queue"]);
+
+const createJournal = () => {
+  const journalsDS = journalsDataStore();
   let accessToCreate = true;
   if (!validateNumber(journalForm.value.entryPrice)) {
     accessToCreate = false;
@@ -185,16 +181,15 @@ const handleValidate = () => {
     error.value.stopLoss.state = false;
     error.value.stopLoss.text = "";
   }
-};
-
-const coinsDS = coinsDataStore();
-const state = ref(["Target", "Stop", "In Position", "closed"]);
-
-const createJournal = () => {
-  console.log(journalForm.value);
+  if (accessToCreate) {
+    journalsDS.createJournal(journalForm.value);
+  }
 };
 const selectTime = (param) => {
   journalForm.value.entryTime = param;
+};
+const selectDate = (param) => {
+  journalForm.value.date = param;
 };
 
 const addTarget = () => {
