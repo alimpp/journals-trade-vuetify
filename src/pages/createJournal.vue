@@ -57,11 +57,22 @@
         tooltip="Add Target"
         @click="addTarget"
       />
+      <BaseButton
+        class="app-mt-9 app-mx-2"
+        icon="delete"
+        width="40px"
+        bg="danger"
+        height="41px"
+        tooltip="Remove Target"
+        @click="removeTarget"
+        v-if="journalForm.targets.length != 0"
+      />
       <div
-        class="app-w-200 app-mx-2"
+        class="app-w-200 app-mx-2 app-flex"
         v-for="target in journalForm.targets"
+        :key="target?.id"
       >
-        <BaseInput :label="target.label" />
+        <BaseInput :label="`Target ${target.id}`" v-model="target.value" />
       </div>
     </div>
     <div class="app-flex app-mt-2">
@@ -188,11 +199,18 @@ const selectTime = (param) => {
 
 const addTarget = () => {
   const target = {
-    id: journalForm.value.targets.length+=1,
-    label: `Target ${journalForm.value.targets.length+=1}`,
+    id: journalForm.value.targets.length + 1,
     value: "",
   };
-  journalForm.value.targets.push(target)
+  journalForm.value.targets.push(target);
+};
+
+const removeTarget = () => {
+  const lastIndex =
+    journalForm.value.targets[journalForm.value.targets.length - 1];
+  journalForm.value.targets = journalForm.value.targets.filter((target) => {
+    return target.id != lastIndex.id;
+  });
 };
 
 onMounted(() => {
