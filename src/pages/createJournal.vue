@@ -18,7 +18,6 @@
           type="outlined"
           v-model="journalForm.coin"
         />
-        {{ journalForm.state }}
       </div>
       <div class="app-w-200 mx-2">
         <BaseSelect
@@ -26,6 +25,14 @@
           :scheama="state"
           type="outlined"
           v-model="journalForm.state"
+        />
+      </div>
+      <div class="app-w-200 mx-2">
+        <BaseSelect
+          label="Position"
+          :scheama="position"
+          type="outlined"
+          v-model="journalForm.position"
         />
       </div>
     </div>
@@ -123,6 +130,7 @@ const journalForm = ref({
   entryUSDT: "",
   entryDescription: "",
   targets: [],
+  position: "",
 });
 
 const error = ref({
@@ -150,6 +158,7 @@ const error = ref({
 
 const coinsDS = coinsDataStore();
 const state = ref(["In Position", "Order in Queue"]);
+const position = ref(["Long", "Short"]);
 
 const createJournal = () => {
   const journalsDS = journalsDataStore();
