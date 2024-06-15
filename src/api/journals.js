@@ -1,7 +1,9 @@
 import { ToSting, JsonParser } from "@/utils/string";
 
 export const AddJournals = (param) => {
-  const result = ToSting(param);
+  const journalList = GetJournals();
+  journalList.unshift(param);
+  const result = ToSting(journalList);
   localStorage.setItem("journals", result);
 };
 

@@ -7,7 +7,7 @@
         <TimePicker class="app-mt-6" @handleEmitTime="selectTime" />
       </div>
       <div class="app-w-30 app-mx-2">
-        <DatePicker class="app-mt-6" @handleEmitTime="selectTime" />
+        <DatePicker class="app-mt-6" @handleEmitDate="selectDate" />
       </div>
     </div>
     <div class="app-flex app-mt-7">
@@ -16,10 +16,17 @@
           label="Select Coin"
           :scheama="coinsDS.coins"
           type="outlined"
+          v-model="journalForm.coin"
         />
+        {{ journalForm.state }}
       </div>
       <div class="app-w-200 mx-2">
-        <BaseSelect label="State" :scheama="state" type="outlined" />
+        <BaseSelect
+          label="State"
+          :scheama="state"
+          type="outlined"
+          v-model="journalForm.state"
+        />
       </div>
     </div>
     <div class="app-flex app-mt-5">
@@ -55,9 +62,24 @@
         width="40px"
         height="41px"
         tooltip="Add Target"
+        @click="addTarget"
       />
-      <div class="app-w-200 app-mx-2">
-        <BaseInput label="Target 1" />
+      <BaseButton
+        class="app-mt-9 app-mx-2"
+        icon="delete"
+        width="40px"
+        bg="danger"
+        height="41px"
+        tooltip="Remove Target"
+        @click="removeTarget"
+        v-if="journalForm.targets.length != 0"
+      />
+      <div
+        class="app-w-200 app-mx-2 app-flex"
+        v-for="target in journalForm.targets"
+        :key="target?.id"
+      >
+        <BaseInput :label="`Target ${target.id}`" v-model="target.value" />
       </div>
     </div>
     <div class="app-flex app-mt-2">
@@ -74,7 +96,7 @@
       width="100px"
       height="35px"
       class="mt-3"
-      @click="createJournal, handleValidate()"
+      @click="createJournal"
     />
   </div>
 </template>
@@ -89,6 +111,7 @@ import BaseButton from "@/components/base/baseButton.vue";
 import TimePicker from "@/components/timePicker/index";
 import DatePicker from "@/components/datePicker/index";
 import { coinsDataStore } from "@/stores/coins/coinsDS";
+import { journalsDataStore } from "@/stores/journals/journalsDS";
 
 const journalForm = ref({
   entryTime: "",
@@ -99,6 +122,7 @@ const journalForm = ref({
   stopLoss: "",
   entryUSDT: "",
   entryDescription: "",
+  targets: [],
 });
 
 const error = ref({
@@ -122,25 +146,13 @@ const error = ref({
     state: false,
     text: "",
   },
-  target1: {
-    state: false,
-    text: "",
-  },
-  target2: {
-    state: false,
-    text: "",
-  },
-  target3: {
-    state: false,
-    text: "",
-  },
-  entryDescription: {
-    state: false,
-    text: "",
-  },
 });
 
-const handleValidate = () => {
+const coinsDS = coinsDataStore();
+const state = ref(["In Position", "Order in Queue"]);
+
+const createJournal = () => {
+  const journalsDS = journalsDataStore();
   let accessToCreate = true;
   if (!validateNumber(journalForm.value.entryPrice)) {
     accessToCreate = false;
@@ -169,16 +181,31 @@ const handleValidate = () => {
     error.value.stopLoss.state = false;
     error.value.stopLoss.text = "";
   }
-};
-
-const coinsDS = coinsDataStore();
-const state = ref(["Target", "Stop", "In Position", "closed"]);
-
-const createJournal = () => {
-  console.log(journalForm.value);
+  if (accessToCreate) {
+    journalsDS.createJournal(journalForm.value);
+  }
 };
 const selectTime = (param) => {
   journalForm.value.entryTime = param;
+};
+const selectDate = (param) => {
+  journalForm.value.date = param;
+};
+
+const addTarget = () => {
+  const target = {
+    id: journalForm.value.targets.length + 1,
+    value: "",
+  };
+  journalForm.value.targets.push(target);
+};
+
+const removeTarget = () => {
+  const lastIndex =
+    journalForm.value.targets[journalForm.value.targets.length - 1];
+  journalForm.value.targets = journalForm.value.targets.filter((target) => {
+    return target.id != lastIndex.id;
+  });
 };
 
 onMounted(() => {

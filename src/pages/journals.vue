@@ -105,5 +105,6 @@ const createNewJournal = () => {
 onMounted(() => {
   coinsDS.getCoins();
   journalsDS.tableSchema.filterBy.coin = coinsDS.coins;
+  journalsDS.getJournals();
 });
 </script>
