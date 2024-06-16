@@ -10,10 +10,8 @@
         <td>{{ item.coin }}</td>
         <td>{{ item.entryPrice }}</td>
         <td>{{ item.stopLoss }}</td>
-        <td>{{ item.target1 }}</td>
-        <td>{{ item.target2 }}</td>
-        <td>{{ item.target3 }}</td>
         <td>{{ item.state }}</td>
+        <td>{{ item.position }}</td>
       </tr>
     </template>
   </BaseTable>

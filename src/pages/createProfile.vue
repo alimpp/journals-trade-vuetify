@@ -69,13 +69,13 @@ const validate = ref({
 const createProfile = () => {
   let access = true;
   if (validateUsername(form.value.username).state) {
-    validate.value.username.state = validateUsername(form.value.username).state;
-    validate.value.username.text = validateUsername(form.value.username).text;
     access = false;
-  } else {
     validate.value.username.state = validateUsername(form.value.username).state;
     validate.value.username.text = validateUsername(form.value.username).text;
+  } else {
     access = true;
+    validate.value.username.state = validateUsername(form.value.username).state;
+    validate.value.username.text = validateUsername(form.value.username).text;
   }
   if (validateEmail(form.value.email).state) {
     validate.value.email.state = validateEmail(form.value.email).state;
@@ -93,6 +93,7 @@ const createProfile = () => {
       loading.value = false;
       router.push("/journals");
     }, 3000);
+    console.log(access);
   }
 };
 </script>
