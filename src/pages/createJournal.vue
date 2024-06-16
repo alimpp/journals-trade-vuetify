@@ -119,6 +119,9 @@ import TimePicker from "@/components/timePicker/index";
 import DatePicker from "@/components/datePicker/index";
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 import { journalsDataStore } from "@/stores/journals/journalsDS";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const journalForm = ref({
   entryTime: "",
@@ -192,13 +195,32 @@ const createJournal = () => {
   }
   if (accessToCreate) {
     journalsDS.createJournal(journalForm.value);
+    resetForm();
   }
 };
+
 const selectTime = (param) => {
   journalForm.value.entryTime = param;
 };
+
 const selectDate = (param) => {
   journalForm.value.date = param;
+};
+
+const resetForm = () => {
+  journalForm.value = {
+    entryTime: "",
+    date: "",
+    coin: "",
+    state: "",
+    entryPrice: "",
+    stopLoss: "",
+    entryUSDT: "",
+    entryDescription: "",
+    targets: [],
+    position: "",
+  };
+  router.push("/journals");
 };
 
 const addTarget = () => {
