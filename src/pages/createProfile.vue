@@ -67,33 +67,27 @@ const validate = ref({
 });
 
 const createProfile = () => {
-  let access = true;
   if (validateUsername(form.value.username).state) {
-    access = false;
     validate.value.username.state = validateUsername(form.value.username).state;
     validate.value.username.text = validateUsername(form.value.username).text;
   } else {
-    access = true;
     validate.value.username.state = validateUsername(form.value.username).state;
     validate.value.username.text = validateUsername(form.value.username).text;
   }
   if (validateEmail(form.value.email).state) {
     validate.value.email.state = validateEmail(form.value.email).state;
     validate.value.email.text = validateEmail(form.value.email).text;
-    access = false;
   } else {
     validate.value.email.state = validateEmail(form.value.email).state;
     validate.value.email.text = validateEmail(form.value.email).text;
-    access = true;
   }
-  if (access) {
+  if (!validate.value.email.state && !validate.value.username.state) {
     loading.value = true;
     profileDS.addProfile(form.value);
     setTimeout(() => {
       loading.value = false;
       router.push("/journals");
     }, 3000);
-    console.log(access);
   }
 };
 </script>

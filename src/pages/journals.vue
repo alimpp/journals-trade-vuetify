@@ -68,7 +68,6 @@ import TableLoading from "@/components/tableLoading/index.vue";
 import JournalsTable from "@/components/journals/table.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
 import baseButton from "@/components/base/baseButton.vue";
-import { bg } from "vuetify/locale";
 
 const journalsDS = journalsDataStore();
 const coinsDS = coinsDataStore();
@@ -105,6 +104,8 @@ const createNewJournal = () => {
 
 onMounted(() => {
   coinsDS.getCoins();
+  let all = { title: "ALL" };
+  coinsDS.coins.push(all);
   journalsDS.tableSchema.filterBy.coin = coinsDS.coins;
   journalsDS.getJournals();
 });
