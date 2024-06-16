@@ -1,10 +1,10 @@
 <template>
   <div
-    class="menu-items-container app-flex app-justify-end"
+    class="menu-items-container app-flex app-justify-start"
     v-if="isOpen"
     @click.self="emit('closeMenu')"
   >
-    <div class="menu-content app-bg-white slid-left-animation">
+    <div class="menu-content app-bg-white slid-right-animation">
       <div class="w-100 app-flex app-justify-start px-2 py-2">
         <i
           class="bi bi-x-lg app-font-size-20 app_pointer"
