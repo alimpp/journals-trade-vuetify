@@ -5,8 +5,8 @@
         class="app_pointer"
         v-for="item in dataSource"
         :key="item.id"
-        @click="selectRow(item.id)"
-        :class="{ highlight: item.id == selectedRow }"
+        @click="selectRow(item)"
+        :class="{ highlight: item.journalId == selectedRow.journalId }"
       >
         <td>{{ item.coin }}</td>
         <td>{{ item.entryPrice }}</td>
