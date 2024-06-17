@@ -5,7 +5,8 @@
         class="app_pointer"
         v-for="item in dataSource"
         :key="item.id"
-        @click="selectRow(item)"
+        @click="selectRow(item.id)"
+        :class="{ highlight: item.id == selectedRow }"
       >
         <td>{{ item.coin }}</td>
         <td>{{ item.entryPrice }}</td>
@@ -41,3 +42,9 @@ const selectRow = (item) => {
   emit("selectedRow", item);
 };
 </script>
+
+<style scoped>
+.highlight {
+  background-color: rgba(3, 163, 255, 0.185);
+}
+</style>
