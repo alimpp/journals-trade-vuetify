@@ -15,7 +15,7 @@
           @selectValue="filteredByState"
         />
       </div>
-      <div class="mx-2 app-w-200">
+      <div class="app-w-200">
         <BaseSelect
           label="Select Position"
           :scheama="tableScheama.filterBy.position"
