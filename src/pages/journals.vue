@@ -15,6 +15,13 @@
           @selectValue="filteredByState"
         />
       </div>
+      <div class="mx-2 app-w-200">
+        <BaseSelect
+          label="Select Position"
+          :scheama="tableScheama.filterBy.position"
+          @selectValue="filteredByPosition"
+        />
+      </div>
     </div>
     <div class="app-flex">
       <div class="app-flex app-flex-column app-w-95 app-p-l-20-px">
@@ -96,6 +103,10 @@ const filteredByCoin = (item) => {
 
 const filteredByState = (item) => {
   journalsDS.filtredBy(item, "state");
+};
+
+const filteredByPosition = (item) => {
+  journalsDS.filtredBy(item, "position");
 };
 
 const createNewJournal = () => {
