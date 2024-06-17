@@ -6,11 +6,11 @@
   >
     <div class="menu-content app-bg-white slid-right-animation">
       <div
-        class="w-100 app-flex app-justify-start px-2 py-2"
+        class="app-w-100 app-flex app-justify-end app-align-end px-2 py-2"
         @click="emit('closeMenu')"
       >
         <i
-          class="bi bi-x-lg app-font-size-20 app_pointer icon"
+          class="bi bi-x-lg app-font-size-20 app_pointer"
           @click="emit('closeMenu')"
         >
         </i>
@@ -97,10 +97,5 @@ const navigateTo = (path) => {
   height: 100vh;
   position: absolute;
   z-index: 9999;
-}
-.menu-items-container .menu-content .icon {
-  float: left;
-  position: relative;
-  margin-left: 93%;
 }
 </style>
