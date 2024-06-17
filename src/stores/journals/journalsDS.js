@@ -9,7 +9,8 @@ export const journalsDataStore = defineStore("journalsStore", {
       header: ["Coin", "Entry Price", "Stop Loss", "State", "Position"],
       filterBy: {
         coin: [],
-        state: ["All", "Target", "Stop", "In Position", "closed", "position"],
+        state: ["All", "Target", "Stop", "In Position", "closed"],
+        position: ["Both", "Long", "Short"],
       },
     },
     tableDataSource: [],
@@ -52,6 +53,16 @@ export const journalsDataStore = defineStore("journalsStore", {
           } else {
             this.tableDataSource = this.tableDataSource.filter((item) => {
               return item.state == param;
+            });
+          }
+          break;
+        case "position":
+          this.loadingControler();
+          if (param == "Both") {
+            this.getJournals();
+          } else {
+            this.tableDataSource = this.tableDataSource.filter((item) => {
+              return item.position == param;
             });
           }
           break;
