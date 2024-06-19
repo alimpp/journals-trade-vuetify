@@ -35,9 +35,10 @@
       >
         <span
           @click="navigateTo(item.path)"
-          class="app-font-size-14 app-font-weight-600 py-2"
+          class="app-font-size-14 app-font-weight-600 app-py-1"
           v-for="item in menuItems"
           :key="item.id"
+          :class="{ 'active-route': item.path == route.path }"
           >{{ item.title }}</span
         >
       </div>
@@ -49,12 +50,14 @@
 import { useRouter } from "vue-router";
 import { defineProps, defineEmits, ref, computed } from "vue";
 import { profileDataStore } from "@/stores/profile/profileDS.js";
+import { useRoute } from "vue-router";
 
 import BaseAvatar from "@/components/base/baseAvatar.vue";
 
 const emit = defineEmits(["closeMenu"]);
 const router = useRouter();
 const profileDS = profileDataStore();
+const route = useRoute();
 
 const username = computed(() => {
   return profileDS.user.username;
@@ -97,5 +100,8 @@ const navigateTo = (path) => {
   height: 100vh;
   position: absolute;
   z-index: 9999;
+}
+.active-route {
+  border-bottom: 2px solid #7d70f1;
 }
 </style>
