@@ -23,6 +23,12 @@ export const journalsDataStore = defineStore("journalsStore", {
       }, 2000);
     },
 
+    removeJournal(param) {
+      this.tableDataSource = this.tableDataSource.filter((item) => {
+        return item !== param;
+      });
+    },
+
     createJournal(param) {
       const result = generateJournalDataModel(param);
       AddJournals(result);

@@ -59,6 +59,7 @@
           height="40px"
           bg="danger"
           tooltip="Remove Selected Journal"
+          @click="removeItem"
         />
       </div>
     </div>
@@ -97,6 +98,11 @@ const selectedRowHandler = (param) => {
   selectedRow.value = param;
 };
 
+const removeItem = (item) => {
+ item = selectedRow.value;
+ journalsDS.removeJournal(item);
+};
+
 const filteredByCoin = (item) => {
   journalsDS.filtredBy(item, "coin");
 };
@@ -108,6 +114,7 @@ const filteredByState = (item) => {
 const filteredByPosition = (item) => {
   journalsDS.filtredBy(item, "position");
 };
+
 
 const createNewJournal = () => {
   router.push("/create-journal");
