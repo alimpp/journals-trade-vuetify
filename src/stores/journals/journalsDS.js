@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { generateJournalDataModel } from "@/model/journalsDataModel.js";
-import { AddJournals, GetJournals } from "@/api/journals.js";
+import { AddJournals, GetJournals, RemoveJournal } from "@/api/journals.js";
 
 export const journalsDataStore = defineStore("journalsStore", {
   state: () => ({
@@ -21,6 +21,13 @@ export const journalsDataStore = defineStore("journalsStore", {
       setTimeout(() => {
         this.loading = false;
       }, 2000);
+    },
+
+    removeJournal(param) {
+      this.tableDataSource = this.tableDataSource.filter((item) => {
+        return item.journalId != param.journalId;
+      });
+      RemoveJournal(this.tableDataSource);
     },
 
     createJournal(param) {

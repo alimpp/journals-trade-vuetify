@@ -59,6 +59,7 @@
           height="40px"
           bg="danger"
           tooltip="Remove Selected Journal"
+          @click="removeItem"
         />
       </div>
     </div>
@@ -95,6 +96,10 @@ const tableDataSource = computed(() => {
 
 const selectedRowHandler = (param) => {
   selectedRow.value = param;
+};
+
+const removeItem = () => {
+  journalsDS.removeJournal(selectedRow.value);
 };
 
 const filteredByCoin = (item) => {

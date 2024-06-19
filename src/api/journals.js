@@ -12,3 +12,8 @@ export const GetJournals = () => {
   const result = JsonParser(journals);
   return result;
 };
+
+export const RemoveJournal = (param) => {
+  const result = ToSting(param);
+  localStorage.setItem("journals", result);
+};
