@@ -22,6 +22,13 @@ const routes = [
         },
       },
       {
+        path: "/journals/:id",
+        name: "singleJournal",
+        component: function () {
+          return import("@/pages/singleJournal.vue");
+        },
+      },
+      {
         path: "/profile",
         name: "profile",
         component: function () {
