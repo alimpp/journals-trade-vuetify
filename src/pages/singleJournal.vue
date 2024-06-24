@@ -1,11 +1,11 @@
 <template>
-  <p>{{ journals }}</p>
+  <p>{{ journalsDS.tableDataSource }}</p>
  
-  <p>{{ findJornal }}</p>
+  <p>{{ findJornal.journalId }}</p>
 </template>
 
 <script setup>
-import { onMounted, computed } from "vue";
+import { onMounted, computed,reactive } from "vue";
 import { useRoute } from "vue-router";
 import { journalsDataStore } from "@/stores/journals/journalsDS.js";
 
@@ -13,17 +13,15 @@ const route = useRoute();
 const journalsDS = journalsDataStore();
 const routId = route.params.id;
 
-const journals = computed(() => {
-  return journalsDS.tableDataSource;
-});
+const journals = journalsDS.tableDataSource;
+
 console.log(journals);
 
-const findJornal = () => {
-  journals.filter(() => {
-    return journals.journalId === routId;
-  })
-};
-console.log(findJornal);
+
+const findJornal = journals.find((item) => {
+    return item.journalId === routId;
+  });
+console.log(findJornal.journalId);
 
 onMounted(() => {
   journalsDS.getJournals();
