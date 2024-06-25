@@ -4,10 +4,14 @@
   >
     <div class="app-flex">
       <div class="app-w-200">
-        <TimePicker class="app-mt-6" @handleEmitTime="selectTime" />
+        <TimePicker class="app-mt-6" @handleEmitTime="selectTime"
+        :time="journalForm.entryTime"
+        />
       </div>
       <div class="app-w-30 app-mx-2">
-        <DatePicker class="app-mt-6" @handleEmitDate="selectDate" />
+        <DatePicker class="app-mt-6" @handleEmitDate="selectDate" 
+        :date="journalForm.date"
+        />
       </div>
     </div>
     <div class="app-flex app-mt-7">
