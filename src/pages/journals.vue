@@ -50,6 +50,7 @@
           height="40px"
           bg="secondary"
           tooltip="Edit Selected Journal"
+          @click="editJournal"
         />
         <baseButton
           :disabled="selectedRow == null"
@@ -100,6 +101,10 @@ const selectedRowHandler = (param) => {
 
 const removeItem = () => {
   journalsDS.removeJournal(selectedRow.value);
+};
+
+const editJournal = () => {
+  router.push(`/journals/${selectedRow.value.journalId}`)
 };
 
 const filteredByCoin = (item) => {

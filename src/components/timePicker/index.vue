@@ -2,9 +2,7 @@
   <div>
     <div class="app-flex app-flex-column" @click="openState = !openState">
       <div class="app-flex">
-        <v-icon class="app_pointer fade_animations" @click="HandleChangeTheme"
-          >mdi-alarm-plus</v-icon
-        >
+        <v-icon class="app_pointer fade_animations">mdi-alarm-plus</v-icon>
         <span class="app-px-1">Entry Time</span>
       </div>
       <div class="select-time app-mt-2">
@@ -45,7 +43,14 @@
 </template>
 <script setup>
 import { themeDataStore } from "@/stores/theme";
-import { ref, watch, defineEmits, computed } from "vue";
+import {
+  ref,
+  watch,
+  defineEmits,
+  computed,
+  onMounted,
+  defineProps,
+} from "vue";
 import BaseButton from "../base/baseButton.vue";
 
 const ThemeDS = themeDataStore();
@@ -67,6 +72,22 @@ const cancel = () => {
   emit("handleEmitTime", selectTime.value);
   openState.value = false;
 };
+
+const props = defineProps({
+  time: {
+    type: String,
+    default: "",
+  },
+});
+
+
+onMounted(() => {
+  setTimeout(() => {
+    if (props.time) {
+      selectTime.value = props.time;
+    }
+  }, 0);
+});
 </script>
 
 <style scoped>

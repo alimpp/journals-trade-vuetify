@@ -44,7 +44,7 @@
 </template>
 <script setup>
 import { themeDataStore } from "@/stores/theme";
-import { ref, watch, defineEmits, computed } from "vue";
+import { ref, watch, defineEmits, computed, defineProps, onUpdated } from "vue";
 import BaseButton from "../base/baseButton.vue";
 
 const ThemeDS = themeDataStore();
@@ -66,6 +66,21 @@ const cancel = () => {
   emit("handleEmitDate", selectDate.value);
   openState.value = false;
 };
+
+const props = defineProps({
+  date: {
+    type: String,
+    default: "",
+  },
+});
+
+onMounted(() => {
+  setTimeout(() => {
+    if (props.date) {
+      selectDate.value = props.date;
+    }
+  }, 0);
+});
 </script>
 
 <style scoped>
