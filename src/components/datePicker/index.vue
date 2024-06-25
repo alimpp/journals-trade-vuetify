@@ -68,15 +68,18 @@ const cancel = () => {
 };
 
 const props = defineProps({
-  date: "",
+  date: {
+    type: String,
+    default: "",
+  },
 });
 
-onUpdated(() => {
-  if (selectDate.value == null) {
-    selectDate.value = props.date;
-  } else {
-    return selectDate.value;
-  }
+onMounted(() => {
+  setTimeout(() => {
+    if (props.date) {
+      selectDate.value = props.date;
+    }
+  }, 0);
 });
 </script>
 

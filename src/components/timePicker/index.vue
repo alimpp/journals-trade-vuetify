@@ -2,9 +2,7 @@
   <div>
     <div class="app-flex app-flex-column" @click="openState = !openState">
       <div class="app-flex">
-        <v-icon class="app_pointer fade_animations" @click="HandleChangeTheme"
-          >mdi-alarm-plus</v-icon
-        >
+        <v-icon class="app_pointer fade_animations">mdi-alarm-plus</v-icon>
         <span class="app-px-1">Entry Time</span>
       </div>
       <div class="select-time app-mt-2">
@@ -52,9 +50,6 @@ import {
   computed,
   onMounted,
   defineProps,
-  onBeforeMount,
-  onBeforeUpdate,
-  onUpdated,
 } from "vue";
 import BaseButton from "../base/baseButton.vue";
 
@@ -79,15 +74,19 @@ const cancel = () => {
 };
 
 const props = defineProps({
-  time: "",
+  time: {
+    type: String,
+    default: "",
+  },
 });
 
-onUpdated(() => {
-  if (selectTime.value == null) {
-     selectTime.value = props.time;
-  } else {
-    return selectTime.value;
-  }
+
+onMounted(() => {
+  setTimeout(() => {
+    if (props.time) {
+      selectTime.value = props.time;
+    }
+  }, 0);
 });
 </script>
 

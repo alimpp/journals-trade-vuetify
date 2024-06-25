@@ -94,7 +94,6 @@ const tableScheama = computed(() => {
 const tableDataSource = computed(() => {
   return journalsDS.tableDataSource;
 });
-console.log(tableDataSource);
 
 const selectedRowHandler = (param) => {
   selectedRow.value = param;
