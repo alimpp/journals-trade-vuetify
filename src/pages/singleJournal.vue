@@ -4,13 +4,17 @@
   >
     <div class="app-flex">
       <div class="app-w-200">
-        <TimePicker class="app-mt-6" @handleEmitTime="selectTime"
-        :time="journalForm.entryTime"
+        <TimePicker
+          class="app-mt-6"
+          @handleEmitTime="selectTime"
+          :time="journalForm.entryTime"
         />
       </div>
       <div class="app-w-30 app-mx-2">
-        <DatePicker class="app-mt-6" @handleEmitDate="selectDate" 
-        :date="journalForm.date"
+        <DatePicker
+          class="app-mt-6 mx-2"
+          @handleEmitDate="selectDate"
+          :date="journalForm.date"
         />
       </div>
     </div>
@@ -65,6 +69,15 @@
           :messageError="error.entryUSDT.text"
         />
       </div>
+      <div class="app-w-200 mx-2">
+        <BaseInput
+          label="Loss USDT"
+          v-model="journalForm.lossUsdt"
+          :error="error.lossUsdt.state"
+          :messageError="error.lossUsdt.text"
+          v-if="journalForm.state == 'Stop'"
+        />
+      </div>
     </div>
     <div class="app-flex app-mt-5">
       <BaseButton
@@ -100,7 +113,14 @@
           v-model="journalForm.entryDescription"
         />
       </div>
+      <div class="app-px-8">
+        <BaseTextArea
+          label="Exit Description"
+          v-model="journalForm.exitDescription"
+        />
+      </div>
     </div>
+
     <BaseButton
       name="Create"
       tooltip="Create Journal"
@@ -141,6 +161,8 @@ const journalForm = ref({
   entryDescription: "",
   targets: [],
   position: "",
+  lossUsdt: "",
+  exitDescription: "",
 });
 
 const error = ref({
@@ -164,10 +186,14 @@ const error = ref({
     state: false,
     text: "",
   },
+  lossUsdt: {
+    state: false,
+    text: "",
+  },
 });
 
 const coinsDS = coinsDataStore();
-const state = ref(["In Position", "Order in Queue"]);
+const state = ref(["In Position", "Order in Queue", "Stop", "Complited", "Full Target"]);
 const position = ref(["Long", "Short"]);
 
 const createJournal = () => {
@@ -190,6 +216,15 @@ const createJournal = () => {
     accessToCreate = true;
     error.value.entryUSDT.state = false;
     error.value.entryUSDT.text = "";
+  }
+  if (!validateNumber(journalForm.value.lossUsdt)) {
+    accessToCreate = false;
+    error.value.lossUsdt.state = true;
+    error.value.lossUsdt.text = "'Exit USDT' is requied!!!";
+  } else {
+    accessToCreate = true;
+    error.value.lossUsdt.state = false;
+    error.value.lossUsdt.text = "";
   }
   if (!validateNumber(journalForm.value.stopLoss)) {
     accessToCreate = false;
