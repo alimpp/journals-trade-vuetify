@@ -17,3 +17,10 @@ export const RemoveJournal = (param) => {
   const result = ToSting(param);
   localStorage.setItem("journals", result);
 };
+
+export const EditJournals = (param) => {
+  const journalList = GetJournals();
+  journalList.unshift(param);
+  const result = ToSting(journalList);
+  localStorage.setItem("journals", result);
+};

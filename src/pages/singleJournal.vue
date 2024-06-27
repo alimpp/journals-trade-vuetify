@@ -117,24 +117,25 @@
         <BaseTextArea
           label="Exit Description"
           v-model="journalForm.exitDescription"
+          v-if="journalForm.state == 'Stop'"
         />
       </div>
     </div>
 
     <BaseButton
-      name="Create"
-      tooltip="Create Journal"
+      name="Edit"
+      tooltip="Edit Journal"
       width="100px"
       height="35px"
       class="mt-3"
-      @click="createJournal"
+      @click="editJournal"
     />
   </div>
 </template>
 
 <script setup>
 import { validateNumber } from "@/utils/validatie.js";
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref } from "vue";
 import BaseInput from "@/components/base/baseInput.vue";
 import BaseTextArea from "@/components/base/baseTextArea.vue";
 import BaseSelect from "@/components/base/baseSelect.vue";
@@ -193,10 +194,16 @@ const error = ref({
 });
 
 const coinsDS = coinsDataStore();
-const state = ref(["In Position", "Order in Queue", "Stop", "Complited", "Full Target"]);
+const state = ref([
+  "In Position",
+  "Order in Queue",
+  "Stop",
+  "Completed",
+  "Full Target",
+]);
 const position = ref(["Long", "Short"]);
 
-const createJournal = () => {
+const editJournal = () => {
   const journalsDS = journalsDataStore();
   let accessToCreate = true;
   if (!validateNumber(journalForm.value.entryPrice)) {
@@ -236,7 +243,7 @@ const createJournal = () => {
     error.value.stopLoss.text = "";
   }
   if (accessToCreate) {
-    journalsDS.createJournal(journalForm.value);
+    journalsDS.editJournal(journalForm.value);
     resetForm();
   }
 };
