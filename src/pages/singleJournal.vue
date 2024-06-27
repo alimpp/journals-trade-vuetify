@@ -243,7 +243,8 @@ const editJournal = () => {
     error.value.stopLoss.text = "";
   }
   if (accessToCreate) {
-    console.log(journalForm.value);
+    journalsDS.editJournal(journalForm.value);
+    resetForm();
   }
 };
 
