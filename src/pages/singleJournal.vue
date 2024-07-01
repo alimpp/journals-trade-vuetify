@@ -120,20 +120,18 @@
           v-if="journalForm.state == 'Stop'"
         />
       </div>
-      <div class="app-px-8 app-flex app-flex-column">
-        <span class="app-font-size-14 app-font-weight-600">Iamge</span>
-        <a
-          href="https://i.imghippo.com/files/bCrsR1719483975.png"
-          target="_blank"
-        >
+      <div
+        v-if="journalForm.imageUrl"
+        class="app-px-8 app-mt-5 app-flex app-flex-column"
+      >
+        <a :href="journalForm.imageUrl" target="_blank">
           <img
-            src="https://i.imghippo.com/files/bCrsR1719483975.png"
+            :src="journalForm.imageUrl"
             width="500"
             class="app_border_radius app-mt-3"
             alt=""
           />
         </a>
-        https://www.imghippo.com/
       </div>
     </div>
 
@@ -142,7 +140,6 @@
       tooltip="Edit Journal"
       width="100px"
       height="35px"
-      class="mt-3"
       @click="editJournal"
     />
   </div>
@@ -179,6 +176,7 @@ const journalForm = ref({
   position: "",
   lossUsdt: "",
   exitDescription: "",
+  imageUrl: "",
 });
 
 const error = ref({

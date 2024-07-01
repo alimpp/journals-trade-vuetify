@@ -96,6 +96,25 @@
           v-model="journalForm.entryDescription"
         />
       </div>
+      <div class="app-flex app-flex-column">
+        <div class="app-w-300 mx-2">
+          <BaseInput label="Image Url" v-model="journalForm.imageUrl" />
+        </div>
+        <a
+          href="https://www.imghippo.com/"
+          style="text-decoration: none"
+          target="_blank"
+        >
+          <BaseButton
+            name="Go Uplaod"
+            tooltip="Go Uploading Image on www.imghippo.com Website"
+            width="300px"
+            height="35px"
+            class="app-mt-3 app-mx-2"
+            @click="createJournal"
+          />
+        </a>
+      </div>
     </div>
     <BaseButton
       name="Create"
@@ -134,6 +153,7 @@ const journalForm = ref({
   entryDescription: "",
   targets: [],
   position: "",
+  imageUrl: "",
 });
 
 const error = ref({
@@ -219,6 +239,7 @@ const resetForm = () => {
     entryDescription: "",
     targets: [],
     position: "",
+    imageUrl: "",
   };
   router.push("/journals");
 };
