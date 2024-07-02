@@ -29,7 +29,9 @@ import TotalCard from "@/components/dashboard/cards/totalCard.vue";
 import StopCard from "@/components/dashboard/cards/stopCard.vue";
 import TargetCard from "@/components/dashboard/cards/targetCard.vue";
 import FullTargetBar from "@/components/dashboard/fullTargetBar.vue";
+import { GetJournalsLengths } from "@/api/dashboard";
 
+const journals = GetJournalsLengths();
 const data = ref({
   labels: ["Total Positions", "Targets", "Stop Loss"],
   datasets: [
