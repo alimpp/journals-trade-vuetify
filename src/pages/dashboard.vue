@@ -22,16 +22,17 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import Doughnut from "@/components/charts/Doughnut.vue";
 import BaseDivider from "@/components/base/baseDivider.vue";
 import TotalCard from "@/components/dashboard/cards/totalCard.vue";
 import StopCard from "@/components/dashboard/cards/stopCard.vue";
 import TargetCard from "@/components/dashboard/cards/targetCard.vue";
 import FullTargetBar from "@/components/dashboard/fullTargetBar.vue";
-import { GetJournalsLengths } from "@/api/dashboard";
+import { dashboardDataStore } from "@/stores/dashboard/dashboardDs";
 
-const journals = GetJournalsLengths();
+const dashboardData = dashboardDataStore();
+
 const data = ref({
   labels: ["Total Positions", "Targets", "Stop Loss"],
   datasets: [
@@ -47,22 +48,28 @@ const cardsDataSource = computed(() => {
     total: {
       title: "Total Positions",
       text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
-      count: "30",
+      count: "",
     },
     stop: {
       title: "Stop Loss Positions",
       text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
-      count: "20",
+      count: "",
     },
     target: {
       title: "Target Positions",
       text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
-      count: "10",
+      count: "",
     },
   };
 });
 
 const fullTargetsDataSource = computed(() => {
   return "";
+});
+
+
+onMounted(() => {
+  dashboardData.getLength();
+  console.log(dashboardData.dashboardDs);
 });
 </script>
