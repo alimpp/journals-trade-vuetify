@@ -1,6 +1,6 @@
 import { JsonParser } from "@/utils/string";
 
-export const GetJournalsLengths = () => {
+export const GetJournalsData = () => {
   const journals = localStorage.getItem("journals");
   const result = JsonParser(journals);
 

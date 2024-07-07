@@ -1,14 +1,14 @@
 import { defineStore } from "pinia";
-import { GetJournalsLengths } from "@/api/dashboard.js";
+import { GetJournalsData } from "@/api/dashboard.js";
 
 export const dashboardDataStore = defineStore("dashboardstore", {
   state: () => ({
-    dashboardDs: [],
+    dataSource: {},
   }),
 
   actions: {
-    getLength() {
-      this.dashboardDs = GetJournalsLengths();
+    getJournalsData() {
+      this.dataSource = GetJournalsData();
     },
   },
 });

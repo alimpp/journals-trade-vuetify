@@ -4,11 +4,6 @@
   >
     <div class="app-flex app-flex-column app-w-60">
       <span class="app-font-size-20 app-font-weight-600">{{ data.title }}</span>
-      <span class="app-font-size-10 app-font-weight-100 app-color-gray">{{
-        data.text
-      }}</span>
-    </div>
-    <div class="app-flex app-justify-end app-align-center app-w-30">
       <span class="app-font-size-44 app-font-weight-700">{{ data.count }}</span>
     </div>
   </div>

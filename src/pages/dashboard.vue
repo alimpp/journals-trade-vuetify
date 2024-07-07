@@ -29,9 +29,9 @@ import TotalCard from "@/components/dashboard/cards/totalCard.vue";
 import StopCard from "@/components/dashboard/cards/stopCard.vue";
 import TargetCard from "@/components/dashboard/cards/targetCard.vue";
 import FullTargetBar from "@/components/dashboard/fullTargetBar.vue";
-import { dashboardDataStore } from "@/stores/dashboard/dashboardDs";
+import { dashboardDataStore } from "@/stores/dashboard/dashboardDS";
 
-const dashboardData = dashboardDataStore();
+const dashboardDS = dashboardDataStore();
 
 const data = ref({
   labels: ["Total Positions", "Targets", "Stop Loss"],
@@ -48,17 +48,17 @@ const cardsDataSource = computed(() => {
     total: {
       title: "Total Positions",
       text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
-      count: "",
+      count: 10,
     },
     stop: {
       title: "Stop Loss Positions",
       text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
-      count: "",
+      count: 20,
     },
     target: {
       title: "Target Positions",
       text: "Ipsum's outline or Lorem Ipsum is an experimental and nonsensical writing in the printing, page layout and graphic design industry. The graphic designer uses this writing nonsensical writing in the printing, page layout and nonsensical writing in the printing, page layout and nonsensical . . . ",
-      count: "",
+      count: 30,
     },
   };
 });
@@ -67,9 +67,7 @@ const fullTargetsDataSource = computed(() => {
   return "";
 });
 
-
 onMounted(() => {
-  dashboardData.getLength();
-  console.log(dashboardData.dashboardDs);
+  dashboardDS.getJournalsData();
 });
 </script>
