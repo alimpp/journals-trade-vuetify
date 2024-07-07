@@ -69,14 +69,11 @@
           :messageError="error.entryUSDT.text"
         />
       </div>
-      <div class="app-w-200 mx-2">
-        <BaseInput
-          label="Loss USDT"
-          v-model="journalForm.lossUsdt"
-          :error="error.lossUsdt.state"
-          :messageError="error.lossUsdt.text"
-          v-if="journalForm.state == 'Stop'"
-        />
+      <div class="app-w-200 mx-2" v-if="journalForm.state == 'Stop'">
+        <BaseInput label="Loss USDT" v-model="journalForm.lossUsdt" />
+      </div>
+      <div class="app-w-200 mx-2" v-if="journalForm.state == 'Full Target'">
+        <BaseInput label="Take Profit" v-model="journalForm.takeProfit" />
       </div>
     </div>
     <div class="app-flex app-mt-5">
@@ -177,6 +174,7 @@ const journalForm = ref({
   lossUsdt: "",
   exitDescription: "",
   imageUrl: "",
+  takeProfit: "",
 });
 
 const error = ref({

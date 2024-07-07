@@ -25,7 +25,7 @@ import Doughnut from "@/components/charts/Doughnut.vue";
 import BaseDivider from "@/components/base/baseDivider.vue";
 import DashboardCard from "@/components/dashboard/cards/index.vue";
 import FullTargetBar from "@/components/dashboard/fullTargetBar.vue";
-import { dashboardDataStore } from "@/stores/dashboard/dashboardDS";
+import { dashboardDataStore } from "@/stores/dashboard/dashboardDs";
 
 const dashboardDS = dashboardDataStore();
 
@@ -44,10 +44,10 @@ const cardsDataSource = computed(() => {
 });
 
 const fullTargetsDataSource = computed(() => {
-  return "";
+  return dashboardDS.fullTargetSource;
 });
-
 onMounted(() => {
   dashboardDS.getJournalsData();
+  dashboardDS.getFullTargetdata();
 });
 </script>
