@@ -111,7 +111,6 @@
             width="300px"
             height="35px"
             class="app-mt-3 app-mx-2"
-            @click="createJournal"
           />
         </a>
       </div>
