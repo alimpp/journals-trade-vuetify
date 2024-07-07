@@ -31,13 +31,21 @@ export const GetJournalsData = () => {
   });
   const orderInQueueLength = orderInQueue.length;
 
-  return {
-    total: totalLength,
-    stop: stopLength,
-    target: targetLength,
-    complete: completedLength,
-    inPosition: inPositionLength,
-    orderInQueue: orderInQueueLength,
-    fullTarget: fullTarget,
-  };
+  return [
+    { id: "1", title: "Total Positions", value: totalLength },
+    { id: "4", title: "Completed Positions", value: completedLength },
+    { id: "3", title: "Target Positions", value: targetLength },
+    { id: "6", title: "In Position", value: inPositionLength },
+    { id: "2", title: "Stop Loss Positions", value: stopLength },
+    { id: "5", title: "In Order Positions", value: orderInQueueLength },
+  ];
+};
+
+export const GetFullTargetPositions = () => {
+  const journals = localStorage.getItem("journals");
+  const result = JsonParser(journals);
+  const fullTarget = result.filter((item) => {
+    return item.state == "Full Target";
+  });
+  return fullTarget;
 };
