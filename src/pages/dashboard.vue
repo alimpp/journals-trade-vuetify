@@ -5,16 +5,19 @@
       <DashboardCard :data="cardsDataSource" />
     </div>
     <div class="app-flex app-w-100">
-      <div
+      <!-- <div
         class="app-flex app-justify-center app-align-center app-w-40 app-pt-10 app_border_radius app-mt-5"
       >
-        <div class="app-flex app-w-100 app-mb-5">
+        <div class="app-flex app-w-100 app-mb-5 ">
           <Doughnut :data="data" />
         </div>
-      </div>
-      <div class="app-flex app-w-60 app-align-center">
-        <FullTargetBar :data="fullTargetsDataSource" />
-      </div>
+      </div> -->
+        <div class="app-flex app-w-60 app-align-top">
+          <FullTargetBar :data="fullTargetsDataSource" />
+        </div>
+        <div class="app-flex app-w-60 app-align-top">
+          <stopBar :data="stopDataSource" />
+        </div>
     </div>
   </div>
 </template>
@@ -25,6 +28,7 @@ import Doughnut from "@/components/charts/Doughnut.vue";
 import BaseDivider from "@/components/base/baseDivider.vue";
 import DashboardCard from "@/components/dashboard/cards/index.vue";
 import FullTargetBar from "@/components/dashboard/fullTargetBar.vue";
+import stopBar from "@/components/dashboard/stopBar.vue";
 import { dashboardDataStore } from "@/stores/dashboard/dashboardDs";
 
 const dashboardDS = dashboardDataStore();
@@ -46,8 +50,14 @@ const cardsDataSource = computed(() => {
 const fullTargetsDataSource = computed(() => {
   return dashboardDS.fullTargetSource;
 });
+
+const stopDataSource = computed(() => {
+  return dashboardDS.stopSource;
+});
+
 onMounted(() => {
   dashboardDS.getJournalsData();
-  dashboardDS.getFullTargetdata();
+  dashboardDS.getFullTargetData();
+  dashboardDS.getStoptData();
 });
 </script>
