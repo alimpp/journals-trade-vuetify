@@ -49,3 +49,12 @@ export const GetFullTargetPositions = () => {
   });
   return fullTarget;
 };
+
+export const GetStopPositions = () => {
+  const journals = localStorage.getItem("journals");
+  const result = JsonParser(journals);
+  const stop = result.filter((item) => {
+    return item.state == "Stop";
+  });
+  return stop;
+};

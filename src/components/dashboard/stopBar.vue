@@ -10,8 +10,8 @@
       <span class="app-font-size-12">{{ item.date }}</span> -->
       <span class="app-font-size-14 app-font-weight-700">Entry USDT</span>
       <span class="app-font-size-12">{{ item.entryUSDT }}</span>
-      <span class="app-font-size-14 app-font-weight-700">Take Profit</span>
-       <span class="app-font-size-12">{{ item.takeProfit }}</span>
+      <span class="app-font-size-14 app-font-weight-700">Loss USDT</span>
+       <span class="app-font-size-12">{{ item.lossUsdt }}</span>
       <div class="line app-mt-4"></div>
     </div>
   </div>
@@ -26,8 +26,8 @@ const props = defineProps({
     default: [],
   },
 });
-
-const title = ref("Full Target Positions");
+console.log(props.data);
+const title = ref("Stoped Positions");
 
 </script>
 
