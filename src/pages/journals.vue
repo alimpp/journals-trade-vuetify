@@ -1,6 +1,6 @@
 <template>
   <div class="app_overflow_hidden">
-    <div class="app-flex app-p-l-20-px">
+    <div class="app-flex app-p-l-20">
       <div class="app-w-200">
         <BaseSelect
           label="Select Coin"
@@ -24,7 +24,9 @@
       </div>
     </div>
     <div class="app-flex">
-      <div class="app-flex app-flex-column app-w-95 app-p-l-20-px">
+      <div
+        class="table-content app-flex app-flex-column app-w-95 app-h-80 app-p-l-20"
+      >
         <TableLoading v-if="loading" />
         <JournalsTable
           v-else
@@ -104,7 +106,7 @@ const removeItem = () => {
 };
 
 const editJournal = () => {
-  router.push(`/journals/${selectedRow.value.journalId}`)
+  router.push(`/journals/${selectedRow.value.journalId}`);
 };
 
 const filteredByCoin = (item) => {
@@ -131,3 +133,9 @@ onMounted(() => {
   journalsDS.getJournals();
 });
 </script>
+
+<style scoped>
+.table-content {
+  overflow-y: scroll;
+}
+</style>
