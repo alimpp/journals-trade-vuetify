@@ -12,12 +12,12 @@
           <Doughnut :data="data" />
         </div>
       </div> -->
-        <div class="app-flex app-w-60 app-align-top">
-          <FullTargetBar :data="fullTargetsDataSource" />
-        </div>
-        <div class="app-flex app-w-60 app-align-top">
-          <stopBar :data="stopDataSource" />
-        </div>
+      <div class="app-flex app-w-50 app-px-3">
+        <FullTargetBar :data="fullTargetsDataSource" />
+      </div>
+      <div class="app-flex app-w-50 app-px-3">
+        <stopBar :data="stopDataSource" />
+      </div>
     </div>
   </div>
 </template>
