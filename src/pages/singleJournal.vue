@@ -136,6 +136,7 @@
     </div>
 
     <BaseButton
+      class="app-mt-4"
       name="Edit"
       tooltip="Edit Journal"
       width="100px"
