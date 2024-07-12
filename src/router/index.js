@@ -23,9 +23,9 @@ const routes = [
       },
       {
         path: "/journals/:id",
-        name: "singleJournal",
+        name: "editJournal",
         component: function () {
-          return import("@/pages/singleJournal.vue");
+          return import("@/pages/editJournal.vue");
         },
       },
       {

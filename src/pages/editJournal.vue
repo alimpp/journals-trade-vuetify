@@ -303,9 +303,9 @@ const removeTarget = () => {
 onMounted(() => {
   journalsDS.getJournals();
   coinsDS.getCoins();
-  const singleJournal = journalsDS.tableDataSource.find((journal) => {
+  const editJournal = journalsDS.tableDataSource.find((journal) => {
     return journal.journalId == route.params.id;
   });
-  journalForm.value = singleJournal;
+  journalForm.value = editJournal;
 });
 </script>

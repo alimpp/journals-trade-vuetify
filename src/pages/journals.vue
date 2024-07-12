@@ -45,7 +45,7 @@
           @click="createNewJournal"
         />
         <baseButton
-          :disabled="selectedRow == null"
+          :disabled="detectJournalState"
           class="mt-3"
           icon="edit"
           width="40px"
@@ -95,6 +95,24 @@ const tableScheama = computed(() => {
 
 const tableDataSource = computed(() => {
   return journalsDS.tableDataSource;
+});
+
+const detectJournalState = computed(() => {
+  if (selectedRow.value) {
+    switch (selectedRow.value.state) {
+      case "Stop":
+      case "Completed":
+      case "Full Target":
+        return true;
+        break;
+      case "In Position":
+      case "Order in Queue":
+        return false;
+        break;
+    }
+  } else {
+    return true;
+  }
 });
 
 const selectedRowHandler = (param) => {
