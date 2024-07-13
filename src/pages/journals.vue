@@ -34,6 +34,7 @@
           :tableScheama="tableScheama"
           :dataSource="tableDataSource"
           @selectedRow="selectedRowHandler"
+          @dblclick="singleJournal"
         />
       </div>
       <div class="app-flex app-flex-column app-align-center app-mx-3 app-w-5">
@@ -125,6 +126,9 @@ const removeItem = () => {
 
 const editJournal = () => {
   router.push(`/journals/${selectedRow.value.journalId}`);
+};
+const singleJournal = () => {
+  router.push(`/singleJournal/${selectedRow.value.journalId}`);
 };
 
 const filteredByCoin = (item) => {
