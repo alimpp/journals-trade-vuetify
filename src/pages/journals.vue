@@ -34,6 +34,7 @@
           :tableScheama="tableScheama"
           :dataSource="tableDataSource"
           @selectedRow="selectedRowHandler"
+          @dblclick="singleJournal"
         />
       </div>
       <div class="app-flex app-flex-column app-align-center app-mx-3 app-w-5">
@@ -45,7 +46,7 @@
           @click="createNewJournal"
         />
         <baseButton
-          :disabled="selectedRow == null"
+          :disabled="detectJournalState"
           class="mt-3"
           icon="edit"
           width="40px"
@@ -97,6 +98,24 @@ const tableDataSource = computed(() => {
   return journalsDS.tableDataSource;
 });
 
+const detectJournalState = computed(() => {
+  if (selectedRow.value) {
+    switch (selectedRow.value.state) {
+      case "Stop":
+      case "Completed":
+      case "Full Target":
+        return true;
+        break;
+      case "In Position":
+      case "Order in Queue":
+        return false;
+        break;
+    }
+  } else {
+    return true;
+  }
+});
+
 const selectedRowHandler = (param) => {
   selectedRow.value = param;
 };
@@ -107,6 +126,9 @@ const removeItem = () => {
 
 const editJournal = () => {
   router.push(`/journals/${selectedRow.value.journalId}`);
+};
+const singleJournal = () => {
+  router.push(`/singleJournal/${selectedRow.value.journalId}`);
 };
 
 const filteredByCoin = (item) => {

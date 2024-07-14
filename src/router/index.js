@@ -23,6 +23,13 @@ const routes = [
       },
       {
         path: "/journals/:id",
+        name: "editJournal",
+        component: function () {
+          return import("@/pages/editJournal.vue");
+        },
+      },
+      {
+        path: "/singleJournal/:id",
         name: "singleJournal",
         component: function () {
           return import("@/pages/singleJournal.vue");
