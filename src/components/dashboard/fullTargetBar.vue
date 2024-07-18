@@ -4,7 +4,7 @@
   >
     <span class="app-font-size-20 app-font-weight-500">{{ title }}</span>
     <div
-      class="app-flex app-flex-column app-mt-3 app_border_radius app-bg-light-pro app-px-2 app-py-3"
+      class="app-flex app-flex-column app-mt-3 app_border_radius app-bg-blur-pro app-px-2 app-py-3"
       v-for="item in data"
       :key="item.id"
     >
@@ -43,7 +43,7 @@ const title = ref("Full Target Positions");
   overflow-y: scroll;
 }
 .line {
-  background: #8481812f;
+  background: #3236fa23;
   width: 100%;
   height: 1px;
 }

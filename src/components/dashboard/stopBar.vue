@@ -4,17 +4,16 @@
   >
     <span class="app-font-size-20 app-font-weight-500">{{ title }}</span>
     <div
-      class="app-flex app-flex-column app-mt-3"
+      class="app-flex app-flex-column app-mt-3 app_border_radius app-bg-blur-pro app-px-2 app-py-3"
       v-for="item in data"
       :key="item.id"
     >
-      <span class="app-font-size-14 app-font-weight-700">Coin</span>
-      <span class="app-font-size-12">{{ item.coin }}</span>
-      <span class="app-font-size-14 app-font-weight-700">Entry USDT</span>
-      <span class="app-font-size-12">{{ item.entryUSDT }}</span>
-      <span class="app-font-size-14 app-font-weight-700">Loss USDT</span>
-      <span class="app-font-size-12">{{ item.lossUsdt }}</span>
-      <div class="line app-mt-4"></div>
+      <span class="app-font-size-18 app-font-weight-500">Coin</span>
+      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{ item.coin }}</span>
+      <span class="app-font-size-18 app-font-weight-500">Entry USDT</span>
+      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{ item.entryUSDT }}</span>
+      <span class="app-font-size-18 app-font-weight-500">Loss USDT</span>
+      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{ item.lossUsdt }}</span>
     </div>
   </div>
 </template>
