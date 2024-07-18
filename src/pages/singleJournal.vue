@@ -263,20 +263,20 @@ const journalsDS = journalsDataStore();
 const title = ref("Journal");
 
 const journalForm = ref({
-  entryTime: "", //
-  date: "", //
-  coin: "", //
-  state: "", //
-  entryPrice: "", //
-  stopLoss: "", //
-  entryUSDT: "", //
-  entryDescription: "", //
+  entryTime: "",
+  date: "",
+  coin: "",
+  state: "",
+  entryPrice: "",
+  stopLoss: "",
+  entryUSDT: "",
+  entryDescription: "",
   targets: [],
-  position: "", //
-  lossUsdt: "", //
+  position: "",
+  lossUsdt: "",
   exitDescription: "",
   imageUrl: "",
-  takeProfit: "", //
+  takeProfit: "",
 });
 
 onMounted(() => {
