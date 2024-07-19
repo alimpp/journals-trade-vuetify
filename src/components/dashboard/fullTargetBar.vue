@@ -1,31 +1,52 @@
 <template>
   <div
-    class="content app-border app_border_radius app-flex app-flex-column app-px-4 app-py-3 app-mt-5 app-w-100"
+    class="content app_border_radius app-flex app-flex-column app-px-4 app-py-3 app-mt-5 app-w-100"
   >
-    <span class="app-font-size-20 app-font-weight-500">{{ title }}</span>
     <div
-      class="app-flex app-flex-column app-mt-3 app_border_radius app-bg-blur-pro app-px-2 app-py-3"
+      class="app-flex app-mt-3 app_border_radius app-bg-white app-px-2 app-py-3 app_pointer"
       v-for="item in data"
       :key="item.id"
+      @click="getSingle(item.journalId)"
     >
-      <span class="app-font-size-18 app-font-weight-500">Coin</span>
-      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{
-        item.coin
-      }}</span>
-      <span class="app-font-size-18 app-font-weight-500">Entry USDT</span>
-      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{
-        item.entryUSDT
-      }}</span>
-      <span class="app-font-size-18 app-font-weight-500">Take Profit</span>
-      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1"
-        >{{ item.takeProfit }} __</span
-      >
+      <div class="app-flex app-flex-column app-w-50">
+        <span class="app-font-size-16 app-font-weight-500 app-color-dark"
+          >Coin</span
+        >
+        <span class="app-font-size-14 app_border_radius app-border py-2 px-1">{{
+          item.coin
+        }}</span>
+        <span
+          class="app-font-size-16 app-font-weight-500 app-color-dark app-mt-2"
+          >Entry USDT</span
+        >
+        <span class="app-font-size-14 app_border_radius app-border py-2 px-1">{{
+          item.entryUSDT
+        }}</span>
+      </div>
+      <div class="app-flex app-flex-column app-w-50 app-px-2">
+        <span class="app-font-size-16 app-font-weight-500 app-color-dark"
+          >Take Profit</span
+        >
+        <span
+          class="app-font-size-14 app_border_radius app-border app-color-secondary py-2 px-1"
+          >{{ item.takeProfit }} __</span
+        >
+        <span
+          class="app-font-size-16 app-font-weight-500 app-color-dark app-mt-2"
+          >State</span
+        >
+        <span
+          class="app-font-size-14 app_border_radius app-bg-secondary py-2 px-1"
+          >{{ item.state }}</span
+        >
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
+import { defineProps } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   data: {
@@ -34,7 +55,11 @@ const props = defineProps({
   },
 });
 
-const title = ref("Full Target Positions");
+const router = useRouter();
+
+const getSingle = (id) => {
+  router.push(`/singleJournal/${id}`);
+};
 </script>
 
 <style scoped>

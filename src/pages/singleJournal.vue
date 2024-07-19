@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container app-flex app-flex-column app-w-100">
+  <div class="app-container app-flex app-flex-column app-w-100 fade_animations">
     <div class="app-flex">
       <span class="app-font-size-20 app-font-weight-700">{{ title }}</span>
       <span class="app-font-size-18 app-font-weight-500 app-px-1 app-pt-1"

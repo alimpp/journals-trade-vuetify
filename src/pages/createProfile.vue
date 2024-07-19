@@ -40,11 +40,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { validateUsername, validateEmail } from "@/utils/validatie.js";
 import { profileDataStore } from "@/stores/profile/profileDS.js";
 import { useRouter } from "vue-router";
-
+import { DetectUser } from "@/middleware/user";
 import BaseInput from "@/components/base/baseInput.vue";
 import BaseButton from "@/components/base/baseButton";
 
@@ -90,6 +90,10 @@ const createProfile = () => {
     }, 3000);
   }
 };
+
+onMounted(() => {
+  DetectUser();
+});
 </script>
 
 <style scoped lang="scss">
