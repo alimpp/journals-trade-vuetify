@@ -4,17 +4,22 @@
   >
     <span class="app-font-size-20 app-font-weight-500">{{ title }}</span>
     <div
-      class="app-flex app-flex-column app-mt-3"
+      class="app-flex app-flex-column app-mt-3 app_border_radius app-bg-blur-pro app-px-2 app-py-3"
       v-for="item in data"
       :key="item.id"
     >
-      <span class="app-font-size-14 app-font-weight-700">Coin</span>
-      <span class="app-font-size-12">{{ item.coin }}</span>
-      <span class="app-font-size-14 app-font-weight-700">Entry USDT</span>
-      <span class="app-font-size-12">{{ item.entryUSDT }}</span>
-      <span class="app-font-size-14 app-font-weight-700">Take Profit</span>
-      <span class="app-font-size-12">{{ item.takeProfit }}</span>
-      <div class="line app-mt-4"></div>
+      <span class="app-font-size-18 app-font-weight-500">Coin</span>
+      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{
+        item.coin
+      }}</span>
+      <span class="app-font-size-18 app-font-weight-500">Entry USDT</span>
+      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1">{{
+        item.entryUSDT
+      }}</span>
+      <span class="app-font-size-18 app-font-weight-500">Take Profit</span>
+      <span class="app-font-size-14 app_border_radius app-bg-light py-2 px-1"
+        >{{ item.takeProfit }} __</span
+      >
     </div>
   </div>
 </template>
@@ -38,7 +43,7 @@ const title = ref("Full Target Positions");
   overflow-y: scroll;
 }
 .line {
-  background: #8481812f;
+  background: #3236fa23;
   width: 100%;
   height: 1px;
 }
