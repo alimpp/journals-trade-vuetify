@@ -12,7 +12,24 @@
 }
 
 .app-bg-blur-pro {
-  background:rgba(12, 109, 255, 0.116)
+  color: #fff;
+  background: rgb(37, 74, 255);
+  background: linear-gradient(
+    175deg,
+    rgba(37, 74, 255, 1) 12%,
+    rgba(92, 123, 254, 1) 53%,
+    rgba(190, 219, 255, 1) 94%
+  );
+}
+
+.app-bg-danger-pro {
+  background: rgb(252, 27, 27);
+  background: linear-gradient(
+    172deg,
+    rgba(252, 27, 27, 1) 0%,
+    rgba(252, 27, 27, 1) 45%,
+    rgba(249, 163, 163, 1) 100%
+  );
 }
 
 .app-bg-dark-pro {

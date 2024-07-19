@@ -5,7 +5,7 @@ import App from "./App.vue";
 import { createApp } from "vue";
 
 import "@/assets/scss/main.scss";
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const app = createApp(App);
 

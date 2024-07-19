@@ -5,17 +5,17 @@
       <DashboardCard :data="cardsDataSource" />
     </div>
     <div class="app-flex app-w-100">
-      <!-- <div
-        class="app-flex app-justify-center app-align-center app-w-40 app-pt-10 app_border_radius app-mt-5"
+      <div
+        class="app-flex app-justify-center app-align-center app-w-30 app-pt-10 app_border_radius app-mt-5"
       >
-        <div class="app-flex app-w-100 app-mb-5 ">
+        <div class="app-flex app-w-100 app-mb-5">
           <Doughnut :data="data" />
         </div>
-      </div> -->
-      <div class="app-flex app-w-50 app-px-3">
+      </div>
+      <div class="app-flex app-w-30 app-px-3">
         <FullTargetBar :data="fullTargetsDataSource" />
       </div>
-      <div class="app-flex app-w-50 app-px-3">
+      <div class="app-flex app-w-30 app-px-3">
         <stopBar :data="stopDataSource" />
       </div>
     </div>
