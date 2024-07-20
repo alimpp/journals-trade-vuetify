@@ -10,7 +10,7 @@
       <span class="app-font-size-14 app-font-weight-700">{{ username }}</span>
 
       <i
-        class="bi bi-arrow-bar-left app-font-size-18 app_pointer app-mx-12"
+        class="bi bi-arrow-left app-font-size-18 app_pointer app-mx-12"
         @click="goBack"
       >
       </i>
