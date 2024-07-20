@@ -5,8 +5,15 @@
         class="bi bi-list app-font-size-20 app_pointer"
         @click="menuState = true"
       ></i>
+
       <BaseAvatar :name="username" />
       <span class="app-font-size-14 app-font-weight-700">{{ username }}</span>
+
+      <i
+        class="bi bi-arrow-bar-left app-font-size-18 app_pointer app-mx-12"
+        @click="goBack"
+      >
+      </i>
     </div>
     <div class="logo-content app-flex app-justify-end app-align-center px-2">
       <ThemeSwitcher class="app-mx-2" />
@@ -19,13 +26,18 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { profileDataStore } from "@/stores/profile/profileDS.js";
+import { useRouter } from "vue-router";
 
 import MenuItems from "@/components/menuItems/index.vue";
 import BaseAvatar from "@/components/base/baseAvatar.vue";
 import ThemeSwitcher from "@/components/themeSwitcher/index.vue";
-
+const router = useRouter();
 const menuState = ref(false);
 const profileDS = profileDataStore();
+
+const goBack = () => {
+  router.go(-1);
+};
 
 const username = computed(() => {
   return profileDS.user.username;

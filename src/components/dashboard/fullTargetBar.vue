@@ -29,7 +29,7 @@
         >
         <span
           class="app-font-size-14 app_border_radius app-border app-color-secondary py-2 px-1"
-          >{{ item.takeProfit }} __</span
+          >{{ item.takeProfit }}</span
         >
         <span
           class="app-font-size-16 app-font-weight-500 app-color-dark app-mt-2"
