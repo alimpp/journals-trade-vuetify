@@ -134,8 +134,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { journalsDataStore } from "@/stores/journals/journalsDS";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
+const router = useRouter();
 const route = useRoute();
 const journalsDS = journalsDataStore();
 
@@ -164,6 +165,10 @@ onMounted(() => {
     return journal.journalId == route.params.id;
   });
   journalForm.value = singleJournal;
+
+  // if (singleJournal.journalId != route.params.id) {
+  //   router.push("/dashboard");
+  // }
 });
 </script>
 
