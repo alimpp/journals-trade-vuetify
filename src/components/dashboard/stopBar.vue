@@ -2,8 +2,10 @@
   <div
     class="content app_border_radius app-flex app-flex-column app-px-4 app-py-3 app-mt-5 app-w-100"
   >
+    <span v-if="data.length == 0">There is not any stoped</span>
     <div
-      class="app-flex app-mt-3 app_border_radius app-bg-white app-px-2 app-py-3 app_pointer"
+      v-else
+      class="app-flex app-mt-3 app_border_radius app-bg-white app-px-2 app-py-3 app_pointer app-w-100"
       v-for="item in data"
       :key="item.id"
       @click="getSingle(item.journalId)"

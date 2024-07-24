@@ -2,6 +2,9 @@
   <div
     class="app-flex-column app-flex app-container app-w-100 slid-left-animation"
   >
+    <div class="app-flex app-justify-end app-w-100">
+      <goBack />
+    </div>
     <div class="app-flex">
       <div class="app-w-200">
         <TimePicker class="app-mt-6" @handleEmitTime="selectTime" />
@@ -138,6 +141,7 @@ import DatePicker from "@/components/datePicker/index";
 import { coinsDataStore } from "@/stores/coins/coinsDS";
 import { journalsDataStore } from "@/stores/journals/journalsDS";
 import { useRouter } from "vue-router";
+import goBack from "@/components/goBack/index.vue"
 
 const router = useRouter();
 

@@ -1,5 +1,8 @@
 <template>
   <div class="app-container app-flex app-flex-column app-w-100 fade_animations">
+    <div class="app-flex app-justify-end app-w-100">
+      <goBack />
+    </div>
     <div class="app-flex">
       <span class="app-font-size-20 app-font-weight-700">{{ title }}</span>
       <span class="app-font-size-18 app-font-weight-500 app-px-1 app-pt-1"
@@ -135,6 +138,7 @@
 import { onMounted, ref } from "vue";
 import { journalsDataStore } from "@/stores/journals/journalsDS";
 import { useRoute, useRouter } from "vue-router";
+import goBack from "@/components/goBack/index.vue"
 
 const router = useRouter();
 const route = useRoute();
